@@ -1,0 +1,23 @@
+:root {
+  --color-bg: #030611;
+  --color-bg-deep: #01030a;
+  --color-bg-soft: #07111f;
+
+  --color-text: #f4f7fb;
+  --color-muted: #9fb4c7;
+
+  --color-cyan: #54d6ff;
+  --color-cyan-bright: #7eefff;
+  --color-purple: #a855f7;
+
+  --color-card: rgba(8, 18, 34, 0.76);
+  --color-card-strong: rgba(3, 10, 24, 0.84);
+  --color-border: rgba(84, 214, 255, 0.28);
+  --color-border-strong: rgba(84, 214, 255, 0.42);
+
+  --shadow-cyan: 0 0 32px rgba(84, 214, 255, 0.22);
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  --container: 1180px;
+}

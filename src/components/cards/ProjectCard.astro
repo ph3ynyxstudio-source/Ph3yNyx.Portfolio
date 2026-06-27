@@ -1,0 +1,22 @@
+---
+import SquareCard from "./SquareCard.astro";
+
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  stack: string[];
+  href: string;
+}
+
+const { id, title, description, stack, href } = Astro.props;
+---
+
+<SquareCard
+  number={id}
+  title={title}
+  description={description}
+  tags={stack}
+  href={href}
+  icon="◈"
+/>

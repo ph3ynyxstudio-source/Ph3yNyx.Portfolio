@@ -1,0 +1,22 @@
+---
+import PageShell from "../layout/PageShell.astro";
+import ProjectCard from "../cards/ProjectCard.astro";
+import { projects } from "../../data/projects";
+---
+
+<PageShell id="projets">
+  <div class="section-heading">
+    <p class="eyebrow">Projets recents</p>
+    <h2>Applications et outils en construction.</h2>
+    <p class="section-intro">
+      Une selection de projets centres sur le local-first, la clarte d’usage et
+      la progression reelle.
+    </p>
+  </div>
+
+  <div class="card-grid">
+    {projects.map((project) => (
+      <ProjectCard {...project} />
+    ))}
+  </div>
+</PageShell>

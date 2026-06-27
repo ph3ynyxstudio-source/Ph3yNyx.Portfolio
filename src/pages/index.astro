@@ -1,17 +1,32 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/layout/PageHero.astro";
+import SectionBackground from "../components/backgrounds/SectionBackground.astro";
+import ProjectsSection from "../components/sections/ProjectsSection.astro";
+import ServicesSection from "../components/sections/ServicesSection.astro";
+import AboutSection from "../components/sections/AboutSection.astro";
+import ContactSection from "../components/sections/ContactSection.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Ph3yNyx.Studio"
+  description="Portfolio developpeur et studio d’outils numeriques local-first."
+>
+  <PageHero
+    eyebrow="Developpeur independant · Createur d’outils numeriques"
+    title="Ph3yNyx."
+    highlight="Studio"
+    description="Je concois et developpe des applications locales, legeres et humaines, orientees donnees, progression personnelle et outils creatifs."
+    primaryLabel="Voir mes projets"
+    primaryHref="#projets"
+    secondaryLabel="Decouvrir mon parcours"
+    secondaryHref="#apropos"
+  />
+
+  <SectionBackground>
+    <ProjectsSection />
+    <ServicesSection />
+    <AboutSection />
+    <ContactSection />
+  </SectionBackground>
+</BaseLayout>
