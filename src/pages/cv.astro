@@ -22,12 +22,54 @@ const linkedInHref =
 const studioEmail = "ph3ynyx.studio@gmail.com";
 
 const skillGroups = [
-  "Frontend",
-  "Applications locales",
-  "Mobile",
-  "Documentation",
-  "Outils",
-  "IA comme assistant",
+  {
+    title: "Clarification",
+    items: [
+      "Clarification d’idées",
+      "Reformulation de besoins",
+      "Découpage d’un projet en étapes",
+    ],
+  },
+  {
+    title: "Structuration",
+    items: [
+      "Structuration de projets",
+      "Organisation de contenu",
+      "Priorisation MVP",
+    ],
+  },
+  {
+    title: "Documentation",
+    items: [
+      "Documentation de projet",
+      "Suivi de progression",
+      "Synthèse de sessions avec Chr0nosV3rs",
+    ],
+  },
+  {
+    title: "Prototypage",
+    items: [
+      "Prototypage assisté par IA",
+      "Comparaison de pistes",
+      "Amélioration par itérations",
+    ],
+  },
+  {
+    title: "Test et interface",
+    items: [
+      "Test responsive",
+      "Observation mobile / desktop",
+      "Ajustements UI et lisibilité",
+    ],
+  },
+  {
+    title: "Apprentissage",
+    items: [
+      "Apprentissage autonome",
+      "Recherche ciblée",
+      "Progression par projets concrets",
+    ],
+  },
 ];
 
 const placeholderBullets = ["À compléter", "À compléter", "À compléter"];
@@ -160,8 +202,12 @@ const placeholderBullets = ["À compléter", "À compléter", "À compléter"];
           <div class="cv-skill-grid">
             {skillGroups.map((group) => (
               <article class="cv-skill-card">
-                <h2>{group}</h2>
-                <p class="cv-placeholder">À compléter.</p>
+                <h2>{group.title}</h2>
+                <ul class="cv-skill-list">
+                  {group.items.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
@@ -392,6 +438,20 @@ const placeholderBullets = ["À compléter", "À compléter", "À compléter"];
   .cv-project-lines {
     display: grid;
     gap: 0.7rem;
+  }
+
+  .cv-skill-list {
+    margin: 0;
+    padding-left: 1rem;
+    display: grid;
+    gap: 0.45rem;
+    color: var(--color-muted);
+    line-height: 1.6;
+  }
+
+  .cv-skill-list li {
+    overflow-wrap: break-word;
+    word-break: normal;
   }
 
   .cv-strength-card p {
