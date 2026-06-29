@@ -19,7 +19,6 @@ const profilePhoto = `${assetBase}phey-rainville-profile.webp`;
 const githubHref = "https://github.com/ph3ynyxstudio-source";
 const linkedInHref =
   "https://www.linkedin.com/in/phey-rainville?utm_source=share_via&utm_content=profile&utm_medium=member_android";
-const primaryEmail = "prainville.pr@gmail.com";
 const studioEmail = "ph3ynyx.studio@gmail.com";
 
 const skillGroups = [
@@ -61,7 +60,7 @@ const placeholderBullets = ["À compléter", "À compléter", "À compléter"];
               <p><span>Localisation</span> Gatineau, Québec</p>
               <p>
                 <span>Email</span>
-                <a class="cv-inline-link" href={`mailto:${primaryEmail}`}>{primaryEmail}</a>
+                <a class="cv-inline-link" href={`mailto:${studioEmail}`}>{studioEmail}</a>
               </p>
               <p>
                 <span>LinkedIn</span>
@@ -108,7 +107,26 @@ const placeholderBullets = ["À compléter", "À compléter", "À compléter"];
 
         <section class="glass-panel cv-section-card">
           <p class="eyebrow">Profil</p>
-          <p class="cv-placeholder">Texte à compléter.</p>
+          <p class="cv-placeholder">
+            Je crée des outils numériques pratiques, documentés et pensés pour
+            aider à organiser, comprendre et reprendre des projets plus
+            facilement.
+          </p>
+          <p class="cv-placeholder">
+            Ma méthode repose sur une progression simple : clarifier le besoin,
+            construire une première version utilisable, tester, documenter,
+            puis améliorer par étapes.
+          </p>
+          <p class="cv-placeholder">
+            J’utilise Chr0nosV3rs, mon propre outil local, pour documenter mes
+            sessions de travail, garder une trace de mes blocages, de mes
+            apprentissages et de ma progression.
+          </p>
+          <p class="cv-placeholder">
+            J’utilise aussi l’IA comme assistant de réflexion pour structurer
+            mes idées, comparer des pistes et accélérer certaines tâches, tout
+            en gardant la décision humaine au centre.
+          </p>
         </section>
 
         <section class="glass-panel cv-section-card">
@@ -191,9 +209,6 @@ const placeholderBullets = ["À compléter", "À compléter", "À compléter"];
           <div class="cv-contact-grid">
             <article class="cv-contact-card">
               <h2>Email</h2>
-              <p class="cv-placeholder">
-                <a class="cv-inline-link" href={`mailto:${primaryEmail}`}>{primaryEmail}</a>
-              </p>
               <p class="cv-placeholder">
                 <a class="cv-inline-link" href={`mailto:${studioEmail}`}>{studioEmail}</a>
               </p>
