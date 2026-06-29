@@ -1,7 +1,7 @@
 export const projects = [
   {
     id: "01",
-    title: "Lun4rMood",
+    title: "Lun△rMood",
     description: "Application d’observation émotionnelle et cycles personnels.",
     stack: ["Flutter", "Dart", "Local-first"],
     status: "Prototype fonctionnel",
