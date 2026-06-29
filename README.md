@@ -1,43 +1,128 @@
-# Astro Starter Kit: Minimal
+Ph3yNyx.Studio — Portfolio v2
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Portfolio personnel de Phey Rainville, créateur d’outils numériques et développeur web junior.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Ce site présente mon parcours, mes projets, ma méthode de travail et mon CV numérique dans une interface visuelle inspirée de l’univers Ph3yNyx.Studio.
 
-## 🚀 Project Structure
+Objectif du site
 
-Inside of your Astro project, you'll see the following folders and files:
+Ph3yNyx.Studio sert à présenter :
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+- mes projets numériques ;
+- mon CV numérique ;
+- ma méthode de travail ;
+- mes compétences observables ;
+- mes outils et prototypes en cours ;
+- mon intérêt pour les interfaces, les outils locaux et la documentation de projets.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Le site est pensé comme une vitrine professionnelle évolutive, orientée emploi, projets et collaborations.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Pages principales
 
-Any static assets, like images, can be placed in the `public/` directory.
+Accueil
 
-## 🧞 Commands
+Présentation courte de mon profil, de ma façon de construire et des outils que j’utilise.
 
-All commands are run from the root of the project, from a terminal:
+CV numérique
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Version web de mon CV, avec :
 
-## 👀 Want to learn more?
+- profil professionnel ;
+- objectif de carrière ;
+- projets principaux ;
+- compétences ;
+- atouts professionnels ;
+- expérience ;
+- formation ;
+- liens de contact.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Projets
+
+Vitrine des projets numériques avec une présentation courte de chaque projet.
+
+Les projets détaillés seront enrichis progressivement avec des captures d’écran, du contexte, la stack utilisée, le statut et les preuves observables.
+
+Services
+
+Présentation courte des types d’aide possibles autour du cadrage, du prototypage, de la documentation et des interfaces numériques.
+
+Projets présentés
+
+Lun△rMood
+
+Application d’observation personnelle autour des cycles, de l’énergie, des émotions et des habitudes.
+
+Chr0nosV3rs
+
+Outil local de documentation de sessions, de progression, de blocages, d’apprentissages et de synthèses de travail.
+
+VespΣr
+
+Cockpit local de navigation contextuelle entre projets, documents, notes et sessions.
+
+Ph3yNyx.Studio
+
+Portfolio web professionnel servant à présenter mes projets, ma méthode et mon parcours.
+
+Méthode de travail
+
+Ma méthode repose sur une progression simple :
+
+1. clarifier le besoin ;
+2. construire une première version utilisable ;
+3. tester ;
+4. documenter ;
+5. améliorer par étapes.
+
+J’utilise aussi Chr0nosV3rs, mon propre outil local, pour documenter mes sessions de travail, garder une trace de mes blocages, de mes apprentissages et de ma progression.
+
+L’IA est utilisée comme assistant de réflexion, de structuration et d’aide au développement, sans remplacer la décision humaine.
+
+Stack
+
+Le site est construit avec :
+
+- Astro
+- HTML
+- CSS
+- JavaScript / TypeScript
+- GitHub Pages
+- GitHub Actions
+
+Déploiement
+
+Le site est publié avec GitHub Pages via GitHub Actions.
+
+URL actuelle :
+
+https://ph3ynyxstudio-source.github.io/Ph3yNyx.Portfolio/
+
+Statut
+
+Version en cours de construction.
+
+La base du site est publiée et fonctionnelle.
+Le contenu du CV numérique et de la page projets sera enrichi progressivement.
+
+Commandes utiles
+
+Installer les dépendances :
+
+npm install
+
+Lancer le projet en local :
+
+npm run dev
+
+Construire le site :
+
+npm run build
+
+Prévisualiser le build :
+
+npm run preview
+
+Notes
+
+Ce portfolio est une version évolutive.
+Il sert autant de vitrine professionnelle que de trace de progression dans mon apprentissage du développement web, des interfaces et des outils numériques documentés.
