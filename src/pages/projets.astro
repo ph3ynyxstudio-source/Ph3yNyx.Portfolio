@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionBackground from "../components/backgrounds/SectionBackground.astro";
+import PageShell from "../components/layout/PageShell.astro";
+import { projects } from "../data/projects";
+---
+
+<BaseLayout
+  title="Projets | Ph3yNyx.Studio"
+  description="Vitrine des projets Ph3yNyx.Studio et de l’ecosysteme PH3YNYX.OS."
+>
+  <SectionBackground>
+    <PageShell>
+      <div class="section-heading">
+        <p class="eyebrow">Projets</p>
+        <h1 class="page-title">Vitrine des projets PH3YNYX.OS.</h1>
+        <p class="section-intro">
+          Des outils locaux, documentes et observables pour organiser,
+          experimenter et faire avancer des projets plus proprement.
+        </p>
+      </div>
+
+      <div class="project-showcase-grid">
+        {projects.map((project) => (
+          <article class="project-showcase-card glass-panel">
+            <div class="project-showcase-head">
+              <p class="eyebrow">Projet {project.id}</p>
+              <span class="project-status">{project.status}</span>
+            </div>
+
+            <h2>{project.title}</h2>
+            <p class="project-showcase-description">{project.description}</p>
+
+            <div class="square-card-tags">
+              {project.stack.map((item) => (
+                <span class="tag">{item}</span>
+              ))}
+            </div>
+
+            <div class="project-proof">
+              <p class="eyebrow">Preuve observable</p>
+              <p>{project.proof}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </PageShell>
+  </SectionBackground>
+</BaseLayout>

@@ -4,6 +4,8 @@ export const projects = [
     title: "Lun4rMood",
     description: "Application d’observation emotionnelle et cycles personnels.",
     stack: ["Flutter", "Dart", "Local-first"],
+    status: "Prototype fonctionnel",
+    proof: "Base mobile centree sur les cycles, l’energie et l’observation emotionnelle.",
     href: "#",
   },
   {
@@ -11,6 +13,8 @@ export const projects = [
     title: "Chr0nosV3rs",
     description: "Outil local de suivi de sessions et progression de projets.",
     stack: ["Tauri", "React", "TypeScript", "Rust"],
+    status: "En structuration",
+    proof: "Systeme pense pour garder une memoire projet et suivre la progression reelle.",
     href: "#",
   },
   {
@@ -18,6 +22,8 @@ export const projects = [
     title: "VespΣr",
     description: "Cockpit local pour naviguer entre projets, documents et sessions.",
     stack: ["Tauri", "React", "TypeScript"],
+    status: "Projet central",
+    proof: "Navigation contextuelle entre projets, documents, notes et sessions locales.",
     href: "#",
   },
   {
@@ -25,6 +31,8 @@ export const projects = [
     title: "Astr4lDesign",
     description: "Outil de creation d’assets visuels, icones et exports.",
     stack: ["React", "Vite", "Canvas", "SVG"],
+    status: "Exploration UI",
+    proof: "Base orientee creation d’assets visuels et experimentation graphique.",
     href: "#",
   },
 ];

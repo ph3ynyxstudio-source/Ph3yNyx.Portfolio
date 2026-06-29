@@ -1,0 +1,127 @@
+<div class="contact-overlay" data-contact-overlay hidden>
+  <div class="contact-overlay-backdrop" data-contact-close></div>
+
+  <div
+    class="contact-overlay-panel glass-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="contact-overlay-title"
+  >
+    <button
+      class="contact-overlay-close"
+      type="button"
+      aria-label="Fermer le contact"
+      data-contact-close
+    >
+      ×
+    </button>
+
+    <div class="contact-overlay-content">
+      <p class="eyebrow">Entrer en contact</p>
+      <p class="section-intro">
+        Pour un besoin, une collaboration, une question ou une offre de travail, contacte-moi directement par courriel.
+      </p>
+
+      <p class="contact-overlay-email">
+        Courriel : <a href="mailto:ph3ynyx.studio@gmail.com">ph3ynyx.studio@gmail.com</a>
+      </p>
+
+      <form class="contact-overlay-form" data-contact-form>
+        <label>
+          <span>Ton courriel</span>
+          <input
+            type="email"
+            name="email"
+            placeholder="toncourriel@exemple.com"
+            required
+          />
+        </label>
+
+        <label>
+          <span>Message</span>
+          <textarea
+            name="message"
+            rows="6"
+            placeholder="Présente brièvement ton besoin, ton projet ou ton opportunité."
+            required
+          ></textarea>
+        </label>
+
+        <div class="contact-overlay-actions">
+          <button class="button button-primary" type="submit">Envoyer</button>
+          <button class="button button-secondary" type="button" data-contact-close>
+            Fermer
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  const initContactOverlay = () => {
+    const overlay = document.querySelector("[data-contact-overlay]");
+    const form = document.querySelector("[data-contact-form]");
+
+    if (!(overlay instanceof HTMLElement)) return;
+    if (overlay.dataset.initialized === "true") return;
+    overlay.dataset.initialized = "true";
+
+    const openOverlay = () => {
+      overlay.hidden = false;
+      document.body.classList.add("contact-overlay-open");
+    };
+
+    const closeOverlay = () => {
+      overlay.hidden = true;
+      document.body.classList.remove("contact-overlay-open");
+    };
+
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+
+      const opener = target.closest("[data-contact-open]");
+      if (opener) {
+        event.preventDefault();
+        openOverlay();
+        return;
+      }
+
+      const closer = target.closest("[data-contact-close]");
+      if (closer) {
+        event.preventDefault();
+        closeOverlay();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !overlay.hidden) {
+        closeOverlay();
+      }
+    });
+
+    if (form instanceof HTMLFormElement) {
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const email = String(formData.get("email") ?? "").trim();
+        const message = String(formData.get("message") ?? "").trim();
+        const body = encodeURIComponent(
+          `Courriel : ${email}\n\nMessage :\n${message}`,
+        );
+        const subject = encodeURIComponent("Prise de contact via Ph3yNyx.Studio");
+
+        window.location.href =
+          `mailto:ph3ynyx.studio@gmail.com?subject=${subject}&body=${body}`;
+      });
+    }
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initContactOverlay, { once: true });
+  } else {
+    initContactOverlay();
+  }
+</script>

@@ -6,6 +6,7 @@ interface Props {
   title: string;
   highlight?: string;
   description?: string;
+  secondaryDescription?: string;
   primaryLabel?: string;
   primaryHref?: string;
   secondaryLabel?: string;
@@ -17,6 +18,7 @@ const {
   title,
   highlight,
   description,
+  secondaryDescription,
   primaryLabel,
   primaryHref = "#",
   secondaryLabel,
@@ -31,11 +33,31 @@ const {
         {eyebrow && <p class="eyebrow">{eyebrow}</p>}
 
         <h1 class="hero-title">
-          {title}
-          {highlight && <span>{highlight}</span>}
+          <span class="hero-title-primary">
+            <span class="hero-title-base">Phey</span>
+            <span class="hero-title-accent">Rainville</span>
+          </span>
+          {highlight && <span class="hero-title-studio">{highlight}</span>}
         </h1>
 
-        {description && <p class="hero-description">{description}</p>}
+        {description && (
+          <p class="hero-description">
+            {description.includes(",") ? (
+              <>
+                {description.slice(0, description.indexOf(",") + 1)}
+                <br />
+                {description.slice(description.indexOf(",") + 2)}
+              </>
+            ) : (
+              description
+            )}
+          </p>
+        )}
+        {secondaryDescription && (
+          <p class="hero-description hero-description-secondary">
+            {secondaryDescription}
+          </p>
+        )}
 
         <div class="hero-actions">
           {primaryLabel && (

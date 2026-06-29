@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionBackground from "../components/backgrounds/SectionBackground.astro";
+import PageShell from "../components/layout/PageShell.astro";
+import ServiceCard from "../components/cards/ServiceCard.astro";
+import { services } from "../data/services";
+---
+
+<BaseLayout
+  title="Services | Ph3yNyx.Studio"
+  description="Services freelance clairs et accessibles proposes par Ph3yNyx.Studio."
+>
+  <SectionBackground>
+    <PageShell>
+      <div class="section-heading">
+        <p class="eyebrow">Services</p>
+        <h1 class="page-title">Services freelance simples, structurants et utiles.</h1>
+        <p class="section-intro">
+          J’aide a cadrer, prototyper et rendre plus lisibles des produits
+          numeriques orientes usage, documentation et progression.
+        </p>
+      </div>
+
+      <div class="card-grid">
+        {services.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+
+      <div class="services-cta glass-panel">
+        <div>
+          <p class="eyebrow">Accompagnement</p>
+          <h2>Besoin d’un MVP, d’une interface ou d’une structure plus claire ?</h2>
+          <p class="section-intro">
+            On peut partir d’une idee, d’un besoin flou ou d’une base existante
+            et la transformer en plan d’action concret.
+          </p>
+        </div>
+
+        <button class="button button-primary" type="button" data-contact-open>
+          Ouvrir le contact
+        </button>
+      </div>
+    </PageShell>
+  </SectionBackground>
+</BaseLayout>

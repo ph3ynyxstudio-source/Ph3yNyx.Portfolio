@@ -2,10 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/layout/PageHero.astro";
 import SectionBackground from "../components/backgrounds/SectionBackground.astro";
-import ProjectsSection from "../components/sections/ProjectsSection.astro";
-import ServicesSection from "../components/sections/ServicesSection.astro";
 import AboutSection from "../components/sections/AboutSection.astro";
-import ContactSection from "../components/sections/ContactSection.astro";
 ---
 
 <BaseLayout
@@ -13,20 +10,21 @@ import ContactSection from "../components/sections/ContactSection.astro";
   description="Portfolio developpeur et studio d’outils numeriques local-first."
 >
   <PageHero
-    eyebrow="Developpeur independant · Createur d’outils numeriques"
+    eyebrow="CRÉATEUR D’OUTILS NUMÉRIQUES · DÉVELOPPEUR WEB JUNIOR"
     title="Ph3yNyx."
     highlight="Studio"
-    description="Je concois et developpe des applications locales, legeres et humaines, orientees donnees, progression personnelle et outils creatifs."
+    description="Je développe des interfaces, des prototypes et des outils numériques pratiques, structurés et utiles."
     primaryLabel="Voir mes projets"
-    primaryHref="#projets"
-    secondaryLabel="Decouvrir mon parcours"
+    primaryHref="/projets"
+    secondaryLabel="Voir mon profil"
     secondaryHref="#apropos"
   />
 
+  <div class="hero-body-accent" aria-hidden="true">
+    <span class="hero-body-accent-line"></span>
+  </div>
+
   <SectionBackground>
-    <ProjectsSection />
-    <ServicesSection />
     <AboutSection />
-    <ContactSection />
   </SectionBackground>
 </BaseLayout>
