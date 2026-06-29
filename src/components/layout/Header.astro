@@ -1,13 +1,19 @@
 ---
-const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+const assetBase = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
-const brandLogo = `${baseUrl}images/logo-ph3ynyx-studio.svg`;
+const internalBase = import.meta.env.DEV ? "/" : "/Ph3yNyx.Portfolio/";
+const withBase = (path = "") => `${internalBase}${path}`;
+const brandLogo = `${assetBase}images/logo-ph3ynyx-studio.svg`;
+const homeHref = withBase("");
+const projectsHref = withBase("projets/");
+const servicesHref = withBase("services/");
+const contactHref = withBase("contact/");
 ---
 
 <header class="site-header">
   <div class="container site-header-inner">
-    <a class="site-brand" href="/">
+    <a class="site-brand" href={homeHref}>
       <img
         class="site-brand-logo"
         src={brandLogo}
@@ -20,9 +26,9 @@ const brandLogo = `${baseUrl}images/logo-ph3ynyx-studio.svg`;
     </a>
 
     <nav class="site-nav" aria-label="Navigation principale">
-      <a href="/projets">Projets</a>
-      <a href="/services">Services</a>
-      <a href="/contact">Contact</a>
+      <a href={projectsHref}>Projets</a>
+      <a href={servicesHref}>Services</a>
+      <a href={contactHref}>Contact</a>
     </nav>
   </div>
 </header>

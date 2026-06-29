@@ -9,6 +9,13 @@ const projectPlaceholders = [
   "Lun△rMood",
   "Ph3yNyx.Studio",
 ];
+const assetBase = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const internalBase = import.meta.env.DEV ? "/" : "/Ph3yNyx.Portfolio/";
+const withBase = (path = "") => `${internalBase}${path}`;
+const projectsHref = withBase("projets/");
+const profilePhoto = `${assetBase}phey-rainville-profile.webp`;
 
 const skillGroups = [
   "Frontend",
@@ -33,7 +40,7 @@ const placeholderBullets = ["À compléter", "À compléter", "À compléter"];
           <div class="cv-avatar-wrap">
             <img
               class="cv-avatar"
-              src="/phey-rainville-profile.webp"
+              src={profilePhoto}
               alt="Photo de profil de Phey Rainville"
               loading="eager"
             />
@@ -55,7 +62,7 @@ const placeholderBullets = ["À compléter", "À compléter", "À compléter"];
         </div>
 
         <div class="cv-hero-actions">
-          <a class="button button-primary" href="/projets">Voir mes projets</a>
+          <a class="button button-primary" href={projectsHref}>Voir mes projets</a>
         </div>
       </article>
     </PageShell>
@@ -75,7 +82,7 @@ const placeholderBullets = ["À compléter", "À compléter", "À compléter"];
         <section class="glass-panel cv-section-card">
           <div class="cv-section-head">
             <p class="eyebrow">Projets principaux</p>
-            <a class="button button-secondary" href="/projets">
+            <a class="button button-secondary" href={projectsHref}>
               Voir plus sur mes projets
             </a>
           </div>
@@ -144,7 +151,7 @@ const placeholderBullets = ["À compléter", "À compléter", "À compléter"];
         <section class="glass-panel cv-section-card">
           <div class="cv-section-head">
             <p class="eyebrow">Liens / contact</p>
-            <a class="button button-secondary" href="/projets">
+            <a class="button button-secondary" href={projectsHref}>
               Voir mes projets
             </a>
           </div>

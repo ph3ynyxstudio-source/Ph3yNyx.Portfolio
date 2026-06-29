@@ -3,6 +3,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/layout/PageHero.astro";
 import SectionBackground from "../components/backgrounds/SectionBackground.astro";
 import AboutSection from "../components/sections/AboutSection.astro";
+
+const internalBase = import.meta.env.DEV ? "/" : "/Ph3yNyx.Portfolio/";
+const withBase = (path = "") => `${internalBase}${path}`;
 ---
 
 <BaseLayout
@@ -15,9 +18,9 @@ import AboutSection from "../components/sections/AboutSection.astro";
     highlight="Studio"
     description="Je développe des interfaces, des prototypes et des outils numériques pratiques, structurés et utiles."
     primaryLabel="Voir mes projets"
-    primaryHref="/projets"
+    primaryHref={withBase("projets/")}
     secondaryLabel="Voir mon CV"
-    secondaryHref="/cv"
+    secondaryHref={withBase("cv/")}
   />
 
   <div class="hero-body-accent" aria-hidden="true">
