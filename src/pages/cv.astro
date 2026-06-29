@@ -16,6 +16,11 @@ const internalBase = import.meta.env.DEV ? "/" : "/Ph3yNyx.Portfolio/";
 const withBase = (path = "") => `${internalBase}${path}`;
 const projectsHref = withBase("projets/");
 const profilePhoto = `${assetBase}phey-rainville-profile.webp`;
+const githubHref = "https://github.com/ph3ynyxstudio-source";
+const linkedInHref =
+  "https://www.linkedin.com/in/phey-rainville?utm_source=share_via&utm_content=profile&utm_medium=member_android";
+const primaryEmail = "prainville.pr@gmail.com";
+const studioEmail = "ph3ynyx.studio@gmail.com";
 
 const skillGroups = [
   "Frontend",
@@ -54,9 +59,22 @@ const placeholderBullets = ["À compléter", "À compléter", "À compléter"];
             </p>
             <div class="cv-meta-grid">
               <p><span>Localisation</span> Gatineau, Québec</p>
-              <p><span>Email</span> À compléter</p>
-              <p><span>LinkedIn</span> À compléter</p>
-              <p><span>GitHub</span> À compléter</p>
+              <p>
+                <span>Email</span>
+                <a class="cv-inline-link" href={`mailto:${primaryEmail}`}>{primaryEmail}</a>
+              </p>
+              <p>
+                <span>LinkedIn</span>
+                <a class="cv-inline-link" href={linkedInHref} target="_blank" rel="noreferrer">
+                  linkedin.com/in/phey-rainville
+                </a>
+              </p>
+              <p>
+                <span>GitHub</span>
+                <a class="cv-inline-link" href={githubHref} target="_blank" rel="noreferrer">
+                  github.com/ph3ynyxstudio-source
+                </a>
+              </p>
             </div>
           </div>
         </div>
@@ -71,7 +89,21 @@ const placeholderBullets = ["À compléter", "À compléter", "À compléter"];
       <div class="cv-section-stack">
         <section class="glass-panel cv-section-card">
           <p class="eyebrow">Objectif de carrière</p>
-          <p class="cv-placeholder">Texte à compléter.</p>
+          <p class="cv-placeholder">
+            Je cherche à intégrer une équipe où je pourrai faire mes preuves,
+            apprendre dans un vrai contexte de travail et contribuer à des
+            projets concrets.
+          </p>
+          <p class="cv-placeholder">
+            Je vise un cadre stable et durable, avec un bon équilibre travail /
+            vie personnelle, idéalement autour de 30 à 32 heures par semaine,
+            avec une possibilité d’ajuster temporairement la charge lors de
+            périodes importantes.
+          </p>
+          <p class="cv-placeholder">
+            Mon objectif est de progresser graduellement, développer mes
+            compétences et gagner en responsabilités avec le temps.
+          </p>
         </section>
 
         <section class="glass-panel cv-section-card">
@@ -159,15 +191,28 @@ const placeholderBullets = ["À compléter", "À compléter", "À compléter"];
           <div class="cv-contact-grid">
             <article class="cv-contact-card">
               <h2>Email</h2>
-              <p class="cv-placeholder">À compléter.</p>
+              <p class="cv-placeholder">
+                <a class="cv-inline-link" href={`mailto:${primaryEmail}`}>{primaryEmail}</a>
+              </p>
+              <p class="cv-placeholder">
+                <a class="cv-inline-link" href={`mailto:${studioEmail}`}>{studioEmail}</a>
+              </p>
             </article>
             <article class="cv-contact-card">
               <h2>LinkedIn</h2>
-              <p class="cv-placeholder">À compléter.</p>
+              <p class="cv-placeholder">
+                <a class="cv-inline-link" href={linkedInHref} target="_blank" rel="noreferrer">
+                  linkedin.com/in/phey-rainville
+                </a>
+              </p>
             </article>
             <article class="cv-contact-card">
               <h2>GitHub</h2>
-              <p class="cv-placeholder">À compléter.</p>
+              <p class="cv-placeholder">
+                <a class="cv-inline-link" href={githubHref} target="_blank" rel="noreferrer">
+                  github.com/ph3ynyxstudio-source
+                </a>
+              </p>
             </article>
           </div>
         </section>
@@ -264,6 +309,18 @@ const placeholderBullets = ["À compléter", "À compléter", "À compléter"];
     margin-bottom: 0.2rem;
     color: var(--color-text);
     font-weight: 600;
+  }
+
+  .cv-inline-link {
+    color: var(--color-cyan-bright);
+    text-decoration: none;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  .cv-inline-link:hover,
+  .cv-inline-link:focus-visible {
+    text-decoration: underline;
   }
 
   .cv-hero-actions,
