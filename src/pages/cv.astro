@@ -1,0 +1,357 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionBackground from "../components/backgrounds/SectionBackground.astro";
+import PageShell from "../components/layout/PageShell.astro";
+
+const projectPlaceholders = [
+  "Chr0nosV3rs",
+  "VespΣr",
+  "Lun△rMood",
+  "Ph3yNyx.Studio",
+];
+
+const skillGroups = [
+  "Frontend",
+  "Applications locales",
+  "Mobile",
+  "Documentation",
+  "Outils",
+  "IA comme assistant",
+];
+
+const placeholderBullets = ["À compléter", "À compléter", "À compléter"];
+---
+
+<BaseLayout
+  title="CV numérique | Ph3yNyx.Studio"
+  description="Structure de base du CV numérique de Phey Rainville."
+>
+  <SectionBackground>
+    <PageShell class="cv-page cv-hero-shell">
+      <article class="glass-panel cv-hero-card">
+        <div class="cv-hero-main">
+          <div class="cv-avatar-wrap">
+            <img
+              class="cv-avatar"
+              src="/phey-rainville-profile.webp"
+              alt="Photo de profil de Phey Rainville"
+              loading="eager"
+            />
+          </div>
+
+          <div class="cv-hero-copy">
+            <p class="eyebrow">CV numérique</p>
+            <h1 class="page-title cv-name">Phey Rainville</h1>
+            <p class="cv-role">
+              Créateur d’outils numériques · Développeur web junior
+            </p>
+            <div class="cv-meta-grid">
+              <p><span>Localisation</span> Gatineau, Québec</p>
+              <p><span>Email</span> À compléter</p>
+              <p><span>LinkedIn</span> À compléter</p>
+              <p><span>GitHub</span> À compléter</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-hero-actions">
+          <a class="button button-primary" href="/projets">Voir mes projets</a>
+        </div>
+      </article>
+    </PageShell>
+
+    <PageShell class="cv-page">
+      <div class="cv-section-stack">
+        <section class="glass-panel cv-section-card">
+          <p class="eyebrow">Objectif de carrière</p>
+          <p class="cv-placeholder">Texte à compléter.</p>
+        </section>
+
+        <section class="glass-panel cv-section-card">
+          <p class="eyebrow">Profil</p>
+          <p class="cv-placeholder">Texte à compléter.</p>
+        </section>
+
+        <section class="glass-panel cv-section-card">
+          <div class="cv-section-head">
+            <p class="eyebrow">Projets principaux</p>
+            <a class="button button-secondary" href="/projets">
+              Voir plus sur mes projets
+            </a>
+          </div>
+
+          <div class="cv-project-grid">
+            {projectPlaceholders.map((project) => (
+              <article class="cv-project-card">
+                <h2>{project}</h2>
+                <div class="cv-project-lines">
+                  <p><span>Type</span> Type à compléter.</p>
+                  <p><span>Résumé</span> Résumé à compléter.</p>
+                  <p><span>Stack</span> Stack à compléter.</p>
+                  <p>
+                    <span>Compétences observables</span> Compétences à
+                    compléter.
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section class="glass-panel cv-section-card">
+          <p class="eyebrow">Compétences</p>
+          <div class="cv-skill-grid">
+            {skillGroups.map((group) => (
+              <article class="cv-skill-card">
+                <h2>{group}</h2>
+                <p class="cv-placeholder">À compléter.</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section class="glass-panel cv-section-card">
+          <p class="eyebrow">Atouts professionnels</p>
+          <div class="cv-strength-grid">
+            {placeholderBullets.map((item) => (
+              <article class="cv-strength-card">
+                <p>{item}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section class="glass-panel cv-section-card">
+          <p class="eyebrow">Expérience professionnelle</p>
+          <div class="cv-timeline-card">
+            <p><span>Rôle / domaine</span> À compléter.</p>
+            <p><span>Entreprise ou contexte</span> À compléter.</p>
+            <p><span>Période</span> À compléter.</p>
+            <p><span>Points clés</span> À compléter.</p>
+          </div>
+        </section>
+
+        <section class="glass-panel cv-section-card">
+          <p class="eyebrow">Formation</p>
+          <div class="cv-timeline-card">
+            <p><span>Formation</span> À compléter.</p>
+            <p><span>Établissement ou contexte</span> À compléter.</p>
+            <p><span>Période</span> À compléter.</p>
+            <p><span>Notes</span> À compléter.</p>
+          </div>
+        </section>
+
+        <section class="glass-panel cv-section-card">
+          <div class="cv-section-head">
+            <p class="eyebrow">Liens / contact</p>
+            <a class="button button-secondary" href="/projets">
+              Voir mes projets
+            </a>
+          </div>
+
+          <div class="cv-contact-grid">
+            <article class="cv-contact-card">
+              <h2>Email</h2>
+              <p class="cv-placeholder">À compléter.</p>
+            </article>
+            <article class="cv-contact-card">
+              <h2>LinkedIn</h2>
+              <p class="cv-placeholder">À compléter.</p>
+            </article>
+            <article class="cv-contact-card">
+              <h2>GitHub</h2>
+              <p class="cv-placeholder">À compléter.</p>
+            </article>
+          </div>
+        </section>
+      </div>
+    </PageShell>
+  </SectionBackground>
+</BaseLayout>
+
+<style>
+  .cv-page {
+    padding-top: 2rem;
+    padding-bottom: 0;
+  }
+
+  .cv-hero-shell {
+    padding-top: 3rem;
+  }
+
+  .cv-section-stack {
+    display: grid;
+    gap: 1.25rem;
+    padding-bottom: 5.5rem;
+  }
+
+  .cv-hero-card,
+  .cv-section-card {
+    padding: 1.4rem;
+  }
+
+  .cv-hero-card {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .cv-hero-main {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1.25rem;
+    align-items: center;
+  }
+
+  .cv-avatar-wrap {
+    width: 124px;
+    height: 124px;
+    border-radius: 999px;
+    overflow: hidden;
+    border: 1px solid rgba(126, 239, 255, 0.22);
+    background: rgba(84, 214, 255, 0.06);
+    flex-shrink: 0;
+  }
+
+  .cv-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cv-hero-copy {
+    display: grid;
+    gap: 0.85rem;
+    min-width: 0;
+  }
+
+  .cv-name {
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+  }
+
+  .cv-role {
+    color: var(--color-cyan-bright);
+    font-weight: 600;
+  }
+
+  .cv-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem 1rem;
+  }
+
+  .cv-meta-grid p,
+  .cv-project-lines p,
+  .cv-timeline-card p,
+  .cv-placeholder {
+    color: var(--color-muted);
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: normal;
+    line-height: 1.65;
+  }
+
+  .cv-meta-grid span,
+  .cv-project-lines span,
+  .cv-timeline-card span {
+    display: block;
+    margin-bottom: 0.2rem;
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .cv-hero-actions,
+  .cv-section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .cv-project-grid,
+  .cv-skill-grid,
+  .cv-strength-grid,
+  .cv-contact-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .cv-project-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  .cv-skill-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .cv-strength-grid,
+  .cv-contact-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .cv-project-card,
+  .cv-skill-card,
+  .cv-strength-card,
+  .cv-contact-card,
+  .cv-timeline-card {
+    display: grid;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 1px solid rgba(126, 239, 255, 0.14);
+    border-radius: 14px;
+    background: rgba(84, 214, 255, 0.04);
+  }
+
+  .cv-project-card h2,
+  .cv-skill-card h2,
+  .cv-contact-card h2 {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.2;
+  }
+
+  .cv-project-lines {
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .cv-strength-card p {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .cv-page {
+      padding-top: 1rem;
+    }
+
+    .cv-hero-shell {
+      padding-top: 2rem;
+    }
+
+    .cv-hero-main {
+      grid-template-columns: 1fr;
+      justify-items: start;
+    }
+
+    .cv-meta-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .cv-section-stack {
+      padding-bottom: 4rem;
+    }
+
+    .cv-hero-card,
+    .cv-section-card {
+      padding: 1.15rem;
+    }
+
+    .cv-avatar-wrap {
+      width: 108px;
+      height: 108px;
+    }
+  }
+</style>
