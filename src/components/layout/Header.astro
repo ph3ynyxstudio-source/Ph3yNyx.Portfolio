@@ -1,14 +1,11 @@
 ---
-const assetBase = import.meta.env.BASE_URL.endsWith("/")
-  ? import.meta.env.BASE_URL
-  : `${import.meta.env.BASE_URL}/`;
-const internalBase = import.meta.env.DEV ? "/" : "/Ph3yNyx.Portfolio/";
-const withBase = (path = "") => `${internalBase}${path}`;
-const brandLogo = `${assetBase}images/logo-ph3ynyx-studio.svg`;
+import { assetPath, withBase } from "../../utils/base-path";
+
+const brandLogo = assetPath("images/logo-ph3ynyx-studio.svg");
 const homeHref = withBase("");
 const projectsHref = withBase("projets/");
 const servicesHref = withBase("services/");
-const contactHref = withBase("contact/");
+const themeStorageKey = "ph3ynyx-theme";
 ---
 
 <header class="site-header">
@@ -28,7 +25,79 @@ const contactHref = withBase("contact/");
     <nav class="site-nav" aria-label="Navigation principale">
       <a href={projectsHref}>Projets</a>
       <a href={servicesHref}>Services</a>
-      <a href={contactHref}>Contact</a>
+      <button
+        class="site-nav-button"
+        type="button"
+        data-site-overlay-open="contact"
+      >
+        Contact
+      </button>
+      <button
+        class="site-theme-toggle"
+        type="button"
+        data-theme-toggle
+        aria-label="Activer le mode soleil"
+        aria-pressed="false"
+        title="Basculer le thème"
+      >
+        <span class="site-theme-toggle-icon" data-theme-icon aria-hidden="true">☀️</span>
+        <span class="sr-only" data-theme-label>Activer le mode soleil</span>
+      </button>
     </nav>
   </div>
 </header>
+
+<script is:inline define:vars={{ themeStorageKey }}>
+  const initThemeToggle = () => {
+    const root = document.documentElement;
+    const toggle = document.querySelector("[data-theme-toggle]");
+    const icon = document.querySelector("[data-theme-icon]");
+    const label = document.querySelector("[data-theme-label]");
+
+    if (!(toggle instanceof HTMLButtonElement)) return;
+    if (toggle.dataset.initialized === "true") return;
+    toggle.dataset.initialized = "true";
+
+    const validThemes = new Set(["dark", "sun"]);
+    const getTheme = () =>
+      validThemes.has(root.dataset.theme ?? "") ? root.dataset.theme : "dark";
+
+    const applyTheme = (theme) => {
+      root.dataset.theme = theme;
+
+      const isSun = theme === "sun";
+      const nextLabel = isSun ? "Activer le mode nuit" : "Activer le mode soleil";
+
+      toggle.setAttribute("aria-pressed", String(isSun));
+      toggle.setAttribute("aria-label", nextLabel);
+      toggle.title = nextLabel;
+
+      if (icon instanceof HTMLElement) {
+        icon.textContent = isSun ? "🌙" : "☀️";
+      }
+
+      if (label instanceof HTMLElement) {
+        label.textContent = nextLabel;
+      }
+    };
+
+    applyTheme(getTheme());
+
+    toggle.addEventListener("click", () => {
+      const nextTheme = getTheme() === "sun" ? "dark" : "sun";
+      applyTheme(nextTheme);
+
+      try {
+        window.localStorage.setItem(themeStorageKey, nextTheme);
+      } catch {
+        // Ignore storage errors and keep in-memory theme state.
+      }
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initThemeToggle, { once: true });
+  } else {
+    initThemeToggle();
+  }
+</script>

@@ -4,6 +4,7 @@ import Footer from "../components/layout/Footer.astro";
 import ContactOverlay from "../components/layout/ContactOverlay.astro";
 import "../styles/tokens.css";
 import "../styles/global.css";
+import { assetPath } from "../utils/base-path";
 
 interface Props {
   title?: string;
@@ -15,15 +16,18 @@ const {
   description = "Portfolio developpeur et studio d’outils numeriques local-first.",
 } = Astro.props;
 
-const baseUrl = import.meta.env.BASE_URL.endsWith("/")
-  ? import.meta.env.BASE_URL
-  : `${import.meta.env.BASE_URL}/`;
-const faviconSvg = `${baseUrl}images/logo-ph3ynyx-studio.svg`;
-const faviconPng = `${baseUrl}images/logo-ph3ynyx-studio.png`;
+const faviconSvg = assetPath("images/logo-ph3ynyx-studio.svg");
+const faviconPng = assetPath("images/logo-ph3ynyx-studio.png");
+const heroBackgroundImage = `url("${assetPath("Hero.webp")}")`;
+const sectionBackgroundImage = `url("${assetPath("Mur.webp")}")`;
+const themeStorageKey = "ph3ynyx-theme";
 ---
 
 <!doctype html>
-<html lang="fr">
+<html
+  lang="fr"
+  style={`--hero-bg-image: ${heroBackgroundImage}; --section-bg-image: ${sectionBackgroundImage};`}
+>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -31,6 +35,23 @@ const faviconPng = `${baseUrl}images/logo-ph3ynyx-studio.png`;
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href={faviconSvg} />
     <link rel="icon" type="image/png" href={faviconPng} />
+    <script is:inline define:vars={{ themeStorageKey }}>
+      (() => {
+        const validThemes = new Set(["dark", "sun"]);
+        let theme = "dark";
+
+        try {
+          const storedTheme = window.localStorage.getItem(themeStorageKey);
+          if (storedTheme && validThemes.has(storedTheme)) {
+            theme = storedTheme;
+          }
+        } catch {
+          theme = "dark";
+        }
+
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
     <title>{title}</title>
   </head>
   <body>
