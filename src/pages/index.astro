@@ -3,9 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/layout/PageHero.astro";
 import SectionBackground from "../components/backgrounds/SectionBackground.astro";
 import AboutSection from "../components/sections/AboutSection.astro";
-
-const internalBase = import.meta.env.DEV ? "/" : "/Ph3yNyx.Portfolio/";
-const withBase = (path = "") => `${internalBase}${path}`;
+import { withBase } from "../utils/base-path";
 ---
 
 <BaseLayout
