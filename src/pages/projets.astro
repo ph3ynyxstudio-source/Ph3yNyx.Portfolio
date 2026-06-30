@@ -3,6 +3,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionBackground from "../components/backgrounds/SectionBackground.astro";
 import PageShell from "../components/layout/PageShell.astro";
 import { projects } from "../data/projects";
+
+const mainProjects = projects.filter((project) => project.group === "main");
+const prototypeProjects = projects.filter((project) => project.group === "prototype");
 ---
 
 <BaseLayout
@@ -13,37 +16,93 @@ import { projects } from "../data/projects";
     <PageShell>
       <div class="section-heading">
         <p class="eyebrow">Projets</p>
-        <h1 class="page-title">Vitrine de mes projets numériques.</h1>
+        <h1 class="page-title">Écosystème de projets numériques en développement.</h1>
         <p class="section-intro">
-          Des outils locaux, documentés et observables pour organiser,
-          expérimenter et faire avancer des projets plus proprement.
+          Ces projets sont des outils numériques en développement, construits
+          par étapes selon des besoins réels. Ils ne sont pas présentés comme
+          des produits finalisés, mais comme des outils utilisables, évolutifs
+          et documentés.
         </p>
       </div>
 
-      <div class="project-showcase-grid">
-        {projects.map((project) => (
-          <article class="project-showcase-card glass-panel">
-            <div class="project-showcase-head">
-              <p class="eyebrow">Projet {project.id}</p>
-              <span class="project-status">{project.status}</span>
-            </div>
+      <section class="projects-group">
+        <div class="section-heading projects-group-heading">
+          <p class="eyebrow">Projets principaux utilisables</p>
+          <h2>Trois outils principaux, chacun avec son usage et sa progression.</h2>
+        </div>
 
-            <h2>{project.title}</h2>
-            <p class="project-showcase-description">{project.description}</p>
+        <div class="project-showcase-grid">
+          {mainProjects.map((project) => (
+            <article class="project-showcase-card glass-panel">
+              <div class="project-showcase-head">
+                <p class="eyebrow">Projet {project.id}</p>
+                <span class="project-status">{project.status}</span>
+              </div>
 
-            <div class="square-card-tags">
-              {project.stack.map((item) => (
-                <span class="tag">{item}</span>
-              ))}
-            </div>
+              <h2>{project.title}</h2>
+              <p class="project-showcase-description">{project.description}</p>
 
-            <div class="project-proof">
-              <p class="eyebrow">Preuve observable</p>
-              <p>{project.proof}</p>
-            </div>
-          </article>
-        ))}
-      </div>
+              <div class="square-card-tags">
+                {project.stack.map((item) => (
+                  <span class="tag">{item}</span>
+                ))}
+              </div>
+
+              <div class="project-proof">
+                <p class="eyebrow">Preuve observable</p>
+                <p>{project.proof}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="projects-group">
+        <div class="section-heading projects-group-heading">
+          <p class="eyebrow">Prototype utilisable / expérimental</p>
+          <h2>Un terrain d’essai visuel, utilisable mais encore en phase prototype.</h2>
+        </div>
+
+        <div class="project-showcase-grid">
+          {prototypeProjects.map((project) => (
+            <article class="project-showcase-card glass-panel">
+              <div class="project-showcase-head">
+                <p class="eyebrow">Projet {project.id}</p>
+                <span class="project-status">{project.status}</span>
+              </div>
+
+              <h2>{project.title}</h2>
+              <p class="project-showcase-description">{project.description}</p>
+
+              <div class="square-card-tags">
+                {project.stack.map((item) => (
+                  <span class="tag">{item}</span>
+                ))}
+              </div>
+
+              <div class="project-proof">
+                <p class="eyebrow">Preuve observable</p>
+                <p>{project.proof}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
     </PageShell>
   </SectionBackground>
 </BaseLayout>
+
+<style>
+  .projects-group {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .projects-group + .projects-group {
+    margin-top: 3rem;
+  }
+
+  .projects-group-heading {
+    margin-bottom: 0;
+  }
+</style>
