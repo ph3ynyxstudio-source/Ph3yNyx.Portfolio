@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionBackground from "../components/backgrounds/SectionBackground.astro";
 import PageShell from "../components/layout/PageShell.astro";
 import { projects } from "../data/projects";
+import { withBase } from "../utils/base-path";
 
 const mainProjects = projects.filter((project) => project.group === "main");
 const prototypeProjects = projects.filter((project) => project.group === "prototype");
@@ -34,12 +35,18 @@ const prototypeProjects = projects.filter((project) => project.group === "protot
         <div class="project-showcase-grid">
           {mainProjects.map((project) => (
             <article class="project-showcase-card glass-panel">
+              {(() => {
+                const projectHref = withBase(`projets/${project.slug}/`);
+                return (
+                  <>
               <div class="project-showcase-head">
                 <p class="eyebrow">Projet {project.id}</p>
                 <span class="project-status">{project.status}</span>
               </div>
 
-              <h2>{project.title}</h2>
+              <h2>
+                <a class="project-showcase-link" href={projectHref}>{project.title}</a>
+              </h2>
               <p class="project-showcase-description">{project.description}</p>
 
               <div class="square-card-tags">
@@ -52,6 +59,13 @@ const prototypeProjects = projects.filter((project) => project.group === "protot
                 <p class="eyebrow">Preuve observable</p>
                 <p>{project.proof}</p>
               </div>
+
+              <a class="project-showcase-link-secondary" href={projectHref}>
+                Ouvrir la fiche projet
+              </a>
+                  </>
+                );
+              })()}
             </article>
           ))}
         </div>
@@ -66,12 +80,18 @@ const prototypeProjects = projects.filter((project) => project.group === "protot
         <div class="project-showcase-grid">
           {prototypeProjects.map((project) => (
             <article class="project-showcase-card glass-panel">
+              {(() => {
+                const projectHref = withBase(`projets/${project.slug}/`);
+                return (
+                  <>
               <div class="project-showcase-head">
                 <p class="eyebrow">Projet {project.id}</p>
                 <span class="project-status">{project.status}</span>
               </div>
 
-              <h2>{project.title}</h2>
+              <h2>
+                <a class="project-showcase-link" href={projectHref}>{project.title}</a>
+              </h2>
               <p class="project-showcase-description">{project.description}</p>
 
               <div class="square-card-tags">
@@ -84,6 +104,13 @@ const prototypeProjects = projects.filter((project) => project.group === "protot
                 <p class="eyebrow">Preuve observable</p>
                 <p>{project.proof}</p>
               </div>
+
+              <a class="project-showcase-link-secondary" href={projectHref}>
+                Ouvrir la fiche projet
+              </a>
+                  </>
+                );
+              })()}
             </article>
           ))}
         </div>
@@ -104,5 +131,23 @@ const prototypeProjects = projects.filter((project) => project.group === "protot
 
   .projects-group-heading {
     margin-bottom: 0;
+  }
+
+  .project-showcase-link,
+  .project-showcase-link-secondary {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .project-showcase-link:hover,
+  .project-showcase-link:focus-visible,
+  .project-showcase-link-secondary:hover,
+  .project-showcase-link-secondary:focus-visible {
+    color: var(--color-cyan-bright);
+  }
+
+  .project-showcase-link-secondary {
+    width: fit-content;
+    color: var(--color-cyan-bright);
   }
 </style>

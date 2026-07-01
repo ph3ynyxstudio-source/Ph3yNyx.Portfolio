@@ -1,0 +1,391 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionBackground from "../../components/backgrounds/SectionBackground.astro";
+import PageShell from "../../components/layout/PageShell.astro";
+import { assetPath, withBase } from "../../utils/base-path";
+import { getProjectBySlug, projects } from "../../data/projects";
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+  }));
+}
+
+const project = getProjectBySlug(Astro.params.slug ?? "");
+
+if (!project) {
+  return Astro.redirect(withBase("projets/"));
+}
+
+const backHref = withBase("projets/");
+const heroImage = assetPath(project.gallery[0].src);
+---
+
+<BaseLayout title={`${project.title} | Ph3yNyx.Studio`} description={project.summary[0]}>
+  <SectionBackground>
+    <PageShell class="project-page">
+      <a class="project-back-link" href={backHref}>Retour aux projets</a>
+
+      <section class="project-hero glass-panel">
+        <div class="project-hero-copy">
+          <p class="eyebrow">Projet {project.id}</p>
+          <div class="project-title-row">
+            <div class="project-icon" aria-hidden="true">{project.icon}</div>
+            <div class="project-title-stack">
+              <h1 class="page-title project-title">{project.title}</h1>
+              <p class="project-tagline">{project.tagline}</p>
+            </div>
+          </div>
+
+          <div class="project-summary">
+            {project.summary.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+          </div>
+
+          <div class="project-meta">
+            <span class="project-status">{project.status}</span>
+          </div>
+        </div>
+
+        <div class="project-hero-media">
+          <img
+            src={heroImage}
+            alt={`Capture principale du projet ${project.title}`}
+            loading="eager"
+          />
+        </div>
+      </section>
+
+      <section class="project-section">
+        <p class="eyebrow">À propos</p>
+        <article class="glass-panel project-card project-about-card">
+          <div class="project-about-block">
+            <h2>Objectif</h2>
+            <p>{project.about.objective}</p>
+          </div>
+          <div class="project-about-block">
+            <h2>Ce qu’il apporte</h2>
+            <p>{project.about.value}</p>
+          </div>
+          <div class="project-about-block">
+            <h2>Ce qu’il démontre</h2>
+            <p>{project.about.proof}</p>
+          </div>
+        </article>
+      </section>
+
+      <div class="project-two-column">
+        <section class="project-section">
+          <p class="eyebrow">Évolution</p>
+          <article class="glass-panel project-card">
+            <div class="project-timeline">
+              {project.evolution.map((step, index) => (
+                <div class="project-timeline-step">
+                  <div class="project-timeline-marker" aria-hidden="true"></div>
+                  <div class="project-timeline-copy">
+                    <h2>{step}</h2>
+                    {index < project.evolution.length - 1 && (
+                      <span class="project-timeline-line" aria-hidden="true"></span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </article>
+        </section>
+
+        <section class="project-section">
+          <p class="eyebrow">Stack</p>
+          <article class="glass-panel project-card project-stack-card">
+            <div class="project-stack-list">
+              {project.stack.map((item) => (
+                <span class="tag">{item}</span>
+              ))}
+            </div>
+          </article>
+        </section>
+      </div>
+
+      <section class="project-section">
+        <p class="eyebrow">Galerie</p>
+        <div class="project-gallery">
+          {project.gallery.map((item) => (
+            <article class="glass-panel project-card project-gallery-card">
+              <img src={assetPath(item.src)} alt={`${project.title} — ${item.title}`} loading="lazy" />
+              <div class="project-gallery-copy">
+                <h2>{item.title}</h2>
+                <p>{item.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <div class="project-two-column">
+        <section class="project-section">
+          <p class="eyebrow">Ce que j’ai appris</p>
+          <article class="glass-panel project-card">
+            <ul class="project-list">
+              {project.learned.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </article>
+        </section>
+
+        <section class="project-section">
+          <p class="eyebrow">Prochaine évolution</p>
+          <article class="glass-panel project-card">
+            <p class="project-mini-label">Prévu</p>
+            <ul class="project-list">
+              {project.next.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </article>
+        </section>
+      </div>
+    </PageShell>
+  </SectionBackground>
+</BaseLayout>
+
+<style>
+  .project-page {
+    display: grid;
+    gap: 1.5rem;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+  }
+
+  .project-back-link {
+    width: fit-content;
+    color: var(--color-cyan-bright);
+    text-decoration: none;
+  }
+
+  .project-back-link:hover,
+  .project-back-link:focus-visible {
+    text-decoration: underline;
+  }
+
+  .project-hero,
+  .project-card {
+    padding: 1.4rem;
+  }
+
+  .project-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.95fr);
+    gap: 1.4rem;
+    align-items: center;
+  }
+
+  .project-hero-copy,
+  .project-title-stack,
+  .project-summary,
+  .project-meta,
+  .project-about-card,
+  .project-about-block,
+  .project-gallery-copy,
+  .project-stack-card {
+    display: grid;
+  }
+
+  .project-hero-copy {
+    gap: 1rem;
+  }
+
+  .project-title-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .project-icon {
+    display: grid;
+    place-items: center;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 18px;
+    border: 1px solid var(--color-accent-border-strong);
+    background: var(--color-accent-surface);
+    color: var(--color-cyan-bright);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .project-title-stack {
+    gap: 0.35rem;
+    min-width: 0;
+  }
+
+  .project-title {
+    font-size: clamp(2.1rem, 5vw, 3.8rem);
+  }
+
+  .project-tagline {
+    color: var(--color-cyan-bright);
+    font-weight: 600;
+    line-height: 1.45;
+  }
+
+  .project-summary {
+    gap: 0.8rem;
+    max-width: 68ch;
+  }
+
+  .project-summary p,
+  .project-about-block p,
+  .project-gallery-copy p,
+  .project-list li {
+    color: var(--color-muted);
+    line-height: 1.65;
+  }
+
+  .project-status,
+  .project-mini-label {
+    width: fit-content;
+    padding: 0.45rem 0.8rem;
+    border: 1px solid var(--color-accent-border);
+    border-radius: 999px;
+    background: var(--color-accent-surface-soft);
+    color: var(--color-cyan-bright);
+    font-size: 0.82rem;
+  }
+
+  .project-hero-media img,
+  .project-gallery-card img {
+    width: 100%;
+    border-radius: 18px;
+    border: 1px solid var(--color-accent-border-soft);
+    background: rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+  }
+
+  .project-hero-media img {
+    min-height: 280px;
+    max-height: 460px;
+  }
+
+  .project-section {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .project-about-card {
+    gap: 1rem;
+  }
+
+  .project-about-block {
+    gap: 0.45rem;
+  }
+
+  .project-about-block h2,
+  .project-gallery-copy h2,
+  .project-timeline-copy h2 {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
+
+  .project-two-column {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.75fr);
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .project-timeline {
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  .project-timeline-step {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.85rem;
+    align-items: start;
+  }
+
+  .project-timeline-marker {
+    width: 0.85rem;
+    height: 0.85rem;
+    margin-top: 0.25rem;
+    border-radius: 999px;
+    background: var(--color-cyan-bright);
+    box-shadow: 0 0 18px rgba(126, 239, 255, 0.28);
+  }
+
+  .project-timeline-copy {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .project-timeline-line {
+    width: 1px;
+    height: 1.5rem;
+    background: var(--color-accent-border-strong);
+    margin-left: 0.1rem;
+  }
+
+  .project-stack-card {
+    gap: 0.8rem;
+  }
+
+  .project-stack-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+  }
+
+  .project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+
+  .project-gallery-card {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .project-gallery-copy {
+    gap: 0.4rem;
+  }
+
+  .project-list {
+    display: grid;
+    gap: 0.7rem;
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+
+  @media (max-width: 900px) {
+    .project-hero,
+    .project-two-column {
+      grid-template-columns: 1fr;
+    }
+
+    .project-hero-media {
+      order: -1;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .project-page {
+      padding-top: 1.5rem;
+      padding-bottom: 4rem;
+    }
+
+    .project-hero,
+    .project-card {
+      padding: 1.2rem;
+    }
+
+    .project-title-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
