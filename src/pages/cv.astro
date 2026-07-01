@@ -15,7 +15,7 @@ const observableSkills = [
   "Clarification d’idées",
   "Structuration de projets",
   "Documentation",
-  "Prototypage assisté par IA",
+  "Développement assisté par IA",
   "Test responsive / interface",
   "Organisation de contenu",
   "Apprentissage autonome",
@@ -24,26 +24,28 @@ const observableSkills = [
 
 const toolGroups = [
   {
-    title: "Développement",
+    title: "Environnement principal",
     items: ["VS Code", "Git", "GitHub", "npm", "pnpm"],
   },
   {
-    title: "Frontend",
-    items: ["React", "Vite", "TypeScript", "HTML", "CSS", "Tailwind"],
+    title: "Frontend / interfaces",
+    items: ["React", "Vite", "TypeScript", "HTML", "CSS", "Tailwind CSS"],
   },
   {
-    title: "Organisation",
-    items: ["Obsidian", "Google Drive", "Chr0nosV3rs"],
+    title: "Mobile / exploration",
+    items: ["Flutter", "Dart", "Android Studio"],
+  },
+  {
+    title: "Cloud / backend exploré",
+    items: ["Firebase", "Google Cloud"],
   },
   {
     title: "IA comme assistant",
-    items: ["ChatGPT", "Codex"],
+    items: ["ChatGPT", "Codex", "Gemini", "Perplexity"],
   },
   {
     title: "Design / création visuelle",
-    items: ["Inkscape"],
-    detail:
-      "Astr4lForge — outil personnel de création d’interfaces et d’assets visuels en développement.",
+    items: ["Inkscape", "Adobe Express", "Canva"],
   },
 ];
 
@@ -61,7 +63,11 @@ const keyProjects = [
   {
     title: "Lun△rMood",
     description:
-      "Application en développement pour l’observation personnelle des émotions, de l’énergie et des cycles, pensée en local-first.",
+      "Application en reconstruction avec Flutter/Dart pour suivre les émotions, l’énergie et les cycles personnels.",
+    details: [
+      "Première version MVP réalisée avec React, Vite et TypeScript.",
+      "Sauvegarde locale avec synchronisation optionnelle.",
+    ],
   },
 ];
 ---
@@ -87,7 +93,9 @@ const keyProjects = [
             <div class="cv-profile-identity">
               <p class="eyebrow">CV numérique</p>
               <h1 class="page-title cv-name">Phey Rainville</h1>
-              <p class="cv-role">Créateur d’outils numériques · Développeur web junior</p>
+              <p class="cv-role">
+                Créateur d’outils numériques • Profil junior en développement
+              </p>
               <div class="cv-meta-list">
                 <p>Gatineau, Québec</p>
                 <p>
@@ -109,24 +117,25 @@ const keyProjects = [
 
           <div class="cv-copy">
             <p>
-              Je crée des outils numériques pratiques, documentés et pensés pour
-              aider à organiser, comprendre et reprendre des projets plus
-              facilement.
+              Je développe des projets personnels afin de concevoir des
+              applications, structurer des idées et explorer différents domaines
+              du développement logiciel.
             </p>
             <p>
-              Ma méthode repose sur une progression simple : clarifier le
-              besoin, construire une première version utilisable, tester,
-              documenter, puis améliorer par étapes.
+              Curieux et polyvalent, je recherche une première expérience en
+              entreprise afin de continuer à apprendre aux côtés d’une équipe et
+              découvrir progressivement le domaine dans lequel je pourrai le
+              mieux évoluer.
             </p>
             <p>
-              Je cherche une première entrée progressive dans le milieu tech ou
-              numérique, dans un rôle où je peux contribuer concrètement,
-              apprendre dans un vrai contexte et évoluer avec le temps.
+              Je développe mes projets par étapes : clarifier le besoin,
+              construire un MVP, tester, documenter, puis améliorer
+              progressivement.
             </p>
           </div>
 
           <a class="button button-secondary cv-project-link" href={projectsHref}>
-            Voir mes projets
+            Découvrir mes projets
           </a>
         </section>
 
@@ -135,7 +144,6 @@ const keyProjects = [
             <div class="cv-column">
               <div class="cv-section-head">
                 <p class="eyebrow">Compétences observables</p>
-                <h2>Compétences, outils & projets en développement</h2>
               </div>
 
               <div class="cv-tag-list">
@@ -163,7 +171,6 @@ const keyProjects = [
             <div class="cv-column">
               <div class="cv-section-head">
                 <p class="eyebrow">Projets en développement</p>
-                <h2>Projets clés</h2>
               </div>
 
               <p class="cv-project-intro">
@@ -177,12 +184,15 @@ const keyProjects = [
                   <article class="cv-project-card">
                     <h3>{project.title}</h3>
                     <p>{project.description}</p>
+                    {project.details?.map((detail) => (
+                      <p class="cv-project-detail">{detail}</p>
+                    ))}
                   </article>
                 ))}
               </div>
 
               <a class="button button-secondary cv-project-link" href={projectsHref}>
-                Voir plus sur mes projets
+                Découvrir mes projets
               </a>
             </div>
           </div>
@@ -191,14 +201,13 @@ const keyProjects = [
         <section class="glass-panel cv-card">
           <div class="cv-section-head">
             <p class="eyebrow">Parcours, formation & disponibilité</p>
-            <h2>Parcours, formation & disponibilité</h2>
           </div>
 
           <div class="cv-summary-grid">
             <article class="cv-summary-block">
               <h3>Formation</h3>
               <p>Formation IT prévue en octobre 2026.</p>
-              <p>Horaire prévu : lundi au vendredi, 9 h à 13 h, avec travaux.</p>
+              <p>Place confirmée pour une prochaine cohorte.</p>
               <p>Équivalence de niveau secondaire (TENS).</p>
             </article>
 
@@ -239,10 +248,9 @@ const keyProjects = [
             <article class="cv-summary-block">
               <h3>Disponibilité / objectif réaliste</h3>
               <p>
-                Je vise un cadre stable et durable, avec une progression
-                réaliste. Pendant ma formation IT prévue en octobre, ma
-                disponibilité devra rester compatible avec les cours du lundi au
-                vendredi, de 9 h à 13 h, ainsi que les travaux à réaliser.
+                Je recherche une entrée progressive dans le milieu tech ou
+                numérique, idéalement dans un cadre stable, flexible et
+                compatible avec ma formation IT prévue en octobre 2026.
               </p>
             </article>
           </div>
@@ -450,7 +458,12 @@ const keyProjects = [
 
   .cv-project-card {
     display: grid;
-    gap: 0.55rem;
+    align-content: start;
+    gap: 0.65rem;
+  }
+
+  .cv-project-detail {
+    line-height: 1.6;
   }
 
   .cv-experience-list {
