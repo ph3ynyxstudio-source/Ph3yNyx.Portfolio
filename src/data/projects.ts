@@ -36,15 +36,25 @@ export const projects: ProjectContent[] = [
     icon: "CH",
     tagline: "Suivi local de sessions et progression de projet.",
     summary: [
-      "Outil local conçu pour documenter le travail réel d’un projet : sessions, blocages, apprentissages et prochaines étapes.",
+      "Outil local conçu pour documenter le travail réel d’un projet : sessions, blocages, apprentissages, synthèses et prochaines étapes.",
       "Il sert de repère quotidien pour garder le contexte, mesurer la progression et éviter de repartir de zéro.",
     ],
     description:
-      "Outil local de suivi de sessions pour documenter la progression, les blocages, les apprentissages et les prochaines étapes d’un projet.",
-    stack: ["Flutter", "Dart", "Local-first"],
+      "Outil local de suivi de sessions pour documenter la progression, les blocages, les apprentissages, les synthèses et les prochaines étapes d’un projet.",
+    stack: [
+      "React",
+      "TypeScript",
+      "CSS",
+      "Vite",
+      "Tauri v2",
+      "Rust",
+      "Python",
+      "Markdown",
+      "JSON",
+    ],
     status: "Utilisable · évolution par besoins",
     proof:
-      "Documentation des sessions, blocages, apprentissages et prochaines étapes.",
+      "Documentation des sessions, blocages, apprentissages, synthèses et prochaines étapes.",
     group: "main",
     href: "/projets/chronosv3rs/",
     about: {
