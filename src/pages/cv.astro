@@ -22,7 +22,11 @@ const observableSkills = [
   "Itération par besoins réels",
 ];
 
-const toolGroups = [
+const toolGroups: Array<{
+  title: string;
+  items: string[];
+  detail?: string;
+}> = [
   {
     title: "Environnement principal",
     items: ["VS Code", "Git", "GitHub", "npm", "pnpm"],
@@ -53,20 +57,20 @@ const keyProjects = [
   {
     title: "Chr0nosV3rs",
     description:
-      "Outil local de suivi de sessions, documentation de progression, blocages, apprentissages et prochaines étapes.",
+      "Outil local de suivi de sessions, de documentation de progression et d’organisation du contexte de travail.",
   },
   {
     title: "VespΣr",
     description:
-      "Cockpit local de projets pour naviguer entre documents, sessions, contexte et outils de travail.",
+      "Cockpit local de projets centralisant documents, sessions, contexte et outils de travail.",
   },
   {
     title: "Lun△rMood",
     description:
-      "Application en reconstruction avec Flutter/Dart pour suivre les émotions, l’énergie et les cycles personnels.",
+      "Application en reconstruction avec Flutter/Dart pour l’observation personnelle.",
     details: [
-      "Première version MVP réalisée avec React, Vite et TypeScript.",
-      "Sauvegarde locale avec synchronisation optionnelle.",
+      "Premier MVP validé avec React, Vite et TypeScript.",
+      "Reconstruction visant une architecture local-first plus durable.",
     ],
   },
 ];
@@ -94,7 +98,7 @@ const keyProjects = [
               <p class="eyebrow">CV numérique</p>
               <h1 class="page-title cv-name">Phey Rainville</h1>
               <p class="cv-role">
-                Créateur d’outils numériques • Profil junior en développement
+                Développeur web junior · Créateur d’outils numériques local-first
               </p>
               <div class="cv-meta-list">
                 <p>Gatineau, Québec</p>
@@ -117,20 +121,19 @@ const keyProjects = [
 
           <div class="cv-copy">
             <p>
-              Je développe des projets personnels afin de concevoir des
-              applications, structurer des idées et explorer différents domaines
-              du développement logiciel.
+             Je conçois des outils numériques, prototypes et applications locales 
+             pour organiser l’information, documenter la progression 
+             et répondre à des besoins concrets.
             </p>
             <p>
-              Curieux et polyvalent, je recherche une première expérience en
-              entreprise afin de continuer à apprendre aux côtés d’une équipe et
-              découvrir progressivement le domaine dans lequel je pourrai le
-              mieux évoluer.
+             Autodidacte, je développe mes projets 
+             par étapes : clarifier le besoin, construire un MVP,
+            tester, documenter, puis améliorer progressivement.
             </p>
             <p>
-              Je développe mes projets par étapes : clarifier le besoin,
-              construire un MVP, tester, documenter, puis améliorer
-              progressivement.
+              Je recherche une première expérience en entreprise afin d’apprendre au contact
+               d’une équipe, contribuer à des projets réels et évoluer 
+               progressivement dans le domaine du développement logiciel.
             </p>
           </div>
 
