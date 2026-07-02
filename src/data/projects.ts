@@ -17,6 +17,7 @@ export interface ProjectContent {
   proof: string;
   group: "main" | "prototype";
   href: string;
+  heroImage?: string;
   about: {
     objective: string;
     value: string;
@@ -171,6 +172,7 @@ export const projects: ProjectContent[] = [
       "Structuration d’un MVP local-first centré sur l’observation, les données personnelles et l’usage humain.",
     group: "main",
     href: "/projets/lunarmood/",
+    heroImage: "images/projects/lunarmood/04-Dashboard-web.webp",
     about: {
       objective:
         "Construire un outil d’observation personnelle simple, respectueux des données locales et utilisable au quotidien.",

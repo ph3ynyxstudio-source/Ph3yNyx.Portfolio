@@ -18,10 +18,7 @@ if (!project) {
 }
 
 const backHref = withBase("projets/");
-const heroImage =
-  project.slug === "lunarmood"
-    ? assetPath("images/projects/lunarmood/04-Dashboard-web.webp")
-    : assetPath(project.gallery[0].src);
+const heroImage = assetPath(project.heroImage ?? project.gallery[0].src);
 ---
 
 <BaseLayout title={`${project.title} | Ph3yNyx.Studio`} description={project.summary[0]}>
