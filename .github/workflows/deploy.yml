@@ -13,7 +13,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -38,22 +38,6 @@ jobs:
       - name: Build site
         run: npm run build
 
-      - name: Inspect build output
-        run: |
-          echo "DIST CONTENTS:"
-          if [ ! -d ./dist ]; then
-            echo "./dist missing"
-            exit 1
-          fi
-          ls -la ./dist
-          file_count=$(find ./dist -type f | wc -l)
-          if [ "$file_count" -eq "0" ]; then
-            echo "./dist exists but contains no files"
-            exit 1
-          fi
-          du -sh ./dist || true
-          find ./dist -maxdepth 2 -type f -print | head -n 50
-
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -62,25 +46,11 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    timeout-minutes: 60
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Show current Pages deployment status
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          sudo apt-get update -y
-          sudo apt-get install -y jq
-          echo "Listing latest Pages deployment:"
-          curl -sS -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer $GITHUB_TOKEN" \
-            https://api.github.com/repos/${{ github.repository }}/pages/deployment | jq || true
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          timeout: 3600000
