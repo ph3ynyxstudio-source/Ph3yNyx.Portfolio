@@ -3,6 +3,5 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://ph3ynyxstudio-source.github.io",
-  base: "/Ph3yNyx.Portfolio/",
+  site: "https://ph3ynyx.dev",
 });
