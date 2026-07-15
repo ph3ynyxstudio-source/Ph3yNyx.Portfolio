@@ -6,9 +6,11 @@ import { assetPath, withBase } from "../../utils/base-path";
 import { getProjectBySlug, projects } from "../../data/projects";
 
 export function getStaticPaths() {
-  return projects.map((project) => ({
-    params: { slug: project.slug },
-  }));
+  return projects
+    .filter((project) => project.href.startsWith("/projets/"))
+    .map((project) => ({
+      params: { slug: project.slug },
+    }));
 }
 
 const project = getProjectBySlug(Astro.params.slug ?? "");

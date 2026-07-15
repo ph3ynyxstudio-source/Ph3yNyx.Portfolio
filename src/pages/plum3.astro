@@ -1,0 +1,1011 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionBackground from "../components/backgrounds/SectionBackground.astro";
+import PageShell from "../components/layout/PageShell.astro";
+import { getProjectBySlug } from "../data/projects";
+import { assetPath, withBase } from "../utils/base-path";
+
+const version = "0.1.0";
+const platform = "Windows x64";
+const fileName = "Plum3_0.1.0_x64_en-US.msi";
+const downloadHref = assetPath(`downloads/plum3/${version}/${fileName}`);
+const heroImageSrc = assetPath("images/projects/plum3/01-en-plum3-night.jpg");
+const downloadIconSrc = assetPath("images/projects/plum3/favicon-plume3.png");
+const privacyHref = withBase("plum3/privacy/");
+const supportHref = withBase("plum3/#soutien");
+const studioHref = withBase("");
+const plum3Project = getProjectBySlug("plum3");
+
+if (!plum3Project) {
+  throw new Error("Les données du projet Plum3 sont introuvables.");
+}
+
+const features = [
+  {
+    title: "Markdown et texte",
+    description: "Crée et ouvre des documents Markdown et des fichiers texte.",
+  },
+  {
+    title: "Sauvegarde locale",
+    description: "Conserve tes fichiers directement sur ton appareil.",
+  },
+  {
+    title: "Styles d’écriture",
+    description: "Adapte l’espace d’écriture à ta façon de travailler.",
+  },
+  {
+    title: "Thèmes Aube et Nuit",
+    description: "Choisis une ambiance claire ou sombre selon le moment.",
+  },
+  {
+    title: "Mode concentration",
+    description: "Réduis les distractions pour rester dans ton texte.",
+  },
+  {
+    title: "Export PDF et DOCX",
+    description: "Transforme tes documents dans des formats faciles à partager.",
+  },
+  {
+    title: "Français et anglais",
+    description: "Utilise l’interface dans la langue qui te convient.",
+  },
+];
+
+const privacyPrinciples = [
+  "Tes fichiers Markdown et texte restent sur ton appareil.",
+  "Aucune création de compte n’est requise.",
+  "Plum3 n’intègre aucune télémétrie.",
+  "Aucun suivi publicitaire n’est effectué.",
+];
+---
+
+<BaseLayout
+  title="Plum3 — Éditeur d’écriture local-first pour Windows | Ph3yNyx.Studio"
+  description="Plum3 est un éditeur d’écriture local-first pour Windows, sans compte, sans cloud obligatoire et sans télémétrie."
+>
+  <main>
+    <SectionBackground>
+      <PageShell class="plum3-hero">
+        <div class="plum3-hero-grid">
+          <div class="plum3-hero-copy">
+            <p class="eyebrow">Éditeur d’écriture local-first</p>
+            <h1 class="plum3-title">Plum3</h1>
+            <p class="plum3-tagline">Dépose ton encre.</p>
+            <p class="plum3-intro">{plum3Project.description}</p>
+
+            <div class="plum3-actions">
+              <a
+                class="plum3-download-button"
+                href={downloadHref}
+                download={fileName}
+                aria-label={`Télécharger Plum3 ${version} pour Windows x64`}
+              >
+                <img
+                  class="plum3-download-icon"
+                  src={downloadIconSrc}
+                  alt=""
+                  width="52"
+                  height="52"
+                />
+                <span class="plum3-download-copy">
+                  <span class="plum3-download-title">Télécharger pour Windows</span>
+                  <span class="plum3-download-subtitle">MSI <span aria-hidden="true">•</span> x64</span>
+                </span>
+                <span class="plum3-download-divider" aria-hidden="true"></span>
+                <span class="plum3-download-symbol" aria-hidden="true">↓</span>
+              </a>
+              <span class="plum3-download-meta">Version {version} · Windows x64 · MSI</span>
+            </div>
+          </div>
+
+          <figure class="plum3-hero-media glass-panel">
+            <img
+              src={heroImageSrc}
+              alt="Interface principale de Plum3 en thème Nuit"
+              width="1280"
+              height="672"
+              loading="eager"
+            />
+            <figcaption>Plum3 en thème Nuit.</figcaption>
+          </figure>
+        </div>
+      </PageShell>
+
+      <PageShell id="projet" class="plum3-section">
+        <div class="section-heading">
+          <p class="eyebrow">Présentation du projet</p>
+          <h2>{plum3Project.tagline}</h2>
+          <span class="plum3-status">{plum3Project.status}</span>
+        </div>
+
+        <div class="plum3-about-grid">
+          <article class="plum3-project-card glass-panel">
+            <h3>Objectif</h3>
+            <p>{plum3Project.about.objective}</p>
+          </article>
+          <article class="plum3-project-card glass-panel">
+            <h3>Ce qu’il apporte</h3>
+            <p>{plum3Project.about.value}</p>
+          </article>
+          <article class="plum3-project-card glass-panel">
+            <h3>Ce qu’il démontre</h3>
+            <p>{plum3Project.about.proof}</p>
+          </article>
+        </div>
+      </PageShell>
+
+      <PageShell id="fonctions" class="plum3-section">
+        <div class="section-heading">
+          <p class="eyebrow">Fonctions principales</p>
+          <h2>Un espace d’écriture simple, local et adaptable.</h2>
+          <p class="section-intro">
+            Plum3 rassemble les outils essentiels pour écrire et organiser tes
+            documents sans imposer de service en ligne.
+          </p>
+        </div>
+
+        <div class="plum3-feature-grid">
+          {features.map((feature) => (
+            <article class="plum3-feature-card glass-panel">
+              <h3>{feature.title}</h3>
+              <p>{feature.description}</p>
+            </article>
+          ))}
+        </div>
+      </PageShell>
+
+      <PageShell id="galerie" class="plum3-section">
+        <div class="section-heading">
+          <p class="eyebrow">Galerie</p>
+          <h2>Plum3 en situation d’écriture.</h2>
+        </div>
+
+        <div class="plum3-gallery">
+          {plum3Project.gallery.map((item) => (
+            <article class="plum3-gallery-card glass-panel">
+              <button
+                class="plum3-gallery-trigger"
+                type="button"
+                aria-label={`Agrandir la capture : ${item.title}`}
+                aria-haspopup="dialog"
+                data-gallery-open
+                data-gallery-src={assetPath(item.src)}
+                data-gallery-alt={`Plum3 — ${item.title}`}
+                data-gallery-caption={item.title}
+              >
+                <img
+                  src={assetPath(item.src)}
+                  alt={`Plum3 — ${item.title}`}
+                  loading="lazy"
+                />
+              </button>
+              <div class="plum3-gallery-copy">
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </PageShell>
+
+      <PageShell id="parcours" class="plum3-section">
+        <div class="plum3-project-details">
+          <section class="plum3-detail-block">
+            <p class="eyebrow">Stack</p>
+            <div class="plum3-detail-card glass-panel">
+              <div class="plum3-stack-list">
+                {plum3Project.stack.map((item) => <span class="tag">{item}</span>)}
+              </div>
+            </div>
+          </section>
+
+          <section class="plum3-detail-block">
+            <p class="eyebrow">Évolution</p>
+            <div class="plum3-detail-card glass-panel">
+              <ol class="plum3-list">
+                {plum3Project.evolution.map((item) => <li>{item}</li>)}
+              </ol>
+            </div>
+          </section>
+
+          <section class="plum3-detail-block">
+            <p class="eyebrow">Ce que j’ai appris</p>
+            <div class="plum3-detail-card glass-panel">
+              <ul class="plum3-list">
+                {plum3Project.learned.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+          </section>
+        </div>
+      </PageShell>
+
+      <PageShell id="confidentialite" class="plum3-section">
+        <div class="plum3-privacy glass-panel">
+          <div class="section-heading">
+            <a class="eyebrow plum3-privacy-label" href={privacyHref}>
+              Politique de confidentialité
+            </a>
+            <h2>Ton écriture reste privée.</h2>
+            <p class="section-intro">
+              Plum3 fonctionne sans compte et sans cloud obligatoire. Tes documents
+              sont conservés localement, dans les emplacements que tu choisis sur
+              ton appareil.
+            </p>
+            <a class="button button-secondary plum3-privacy-link" href={privacyHref}>
+              Lire la politique complète
+            </a>
+          </div>
+
+          <ul class="plum3-check-list">
+            {privacyPrinciples.map((principle) => <li>{principle}</li>)}
+          </ul>
+        </div>
+      </PageShell>
+
+      <PageShell id="informations" class="plum3-section">
+        <div class="section-heading">
+          <p class="eyebrow">Informations techniques</p>
+          <h2>Version Windows actuelle.</h2>
+        </div>
+
+        <dl class="plum3-specs glass-panel">
+          <div>
+            <dt>Version</dt>
+            <dd>{version}</dd>
+          </div>
+          <div>
+            <dt>Plateforme</dt>
+            <dd>{platform}</dd>
+          </div>
+          <div>
+            <dt>Format</dt>
+            <dd>MSI</dd>
+          </div>
+          <div>
+            <dt>Éditeur</dt>
+            <dd>Ph3yNyx.Studio</dd>
+          </div>
+        </dl>
+
+        <div class="plum3-direct-download">
+          <p>Fichier d’installation direct et versionné :</p>
+          <a href={downloadHref} download={fileName}>{fileName}</a>
+        </div>
+      </PageShell>
+
+      <PageShell id="soutien" class="plum3-section">
+        <div class="plum3-support glass-panel">
+          <div>
+            <p class="eyebrow">Soutien</p>
+            <h2>Besoin d’aide avec Plum3 ?</h2>
+            <p class="section-intro">
+              Pour signaler un problème ou poser une question, contacte directement
+              Ph3yNyx.Studio.
+            </p>
+          </div>
+          <button
+            class="button button-secondary"
+            type="button"
+            data-site-overlay-open="contact"
+          >
+            Contacter le soutien
+          </button>
+        </div>
+
+        <nav class="plum3-store-links" aria-label="Liens publics pour Plum3">
+          <a href={privacyHref}>
+            Politique de confidentialité
+          </a>
+          <a href={supportHref}>Page de soutien</a>
+          <a href={studioHref}>Site officiel Ph3yNyx.Studio</a>
+        </nav>
+      </PageShell>
+    </SectionBackground>
+
+    <dialog class="plum3-lightbox" data-plum3-lightbox aria-label="Capture Plum3 agrandie">
+      <button
+        class="plum3-lightbox-close"
+        type="button"
+        aria-label="Fermer l’image agrandie"
+        data-gallery-close
+      >
+        ×
+      </button>
+      <figure>
+        <img src="" alt="" data-gallery-image />
+        <figcaption data-gallery-caption></figcaption>
+      </figure>
+    </dialog>
+  </main>
+</BaseLayout>
+
+<script>
+  const initPlum3Gallery = () => {
+    const dialog = document.querySelector("[data-plum3-lightbox]");
+    const image = dialog?.querySelector("[data-gallery-image]");
+    const caption = dialog?.querySelector("[data-gallery-caption]");
+    const closeButton = dialog?.querySelector("[data-gallery-close]");
+
+    if (!(dialog instanceof HTMLDialogElement)) return;
+    if (!(image instanceof HTMLImageElement)) return;
+    if (!(caption instanceof HTMLElement)) return;
+    if (!(closeButton instanceof HTMLButtonElement)) return;
+    if (dialog.dataset.initialized === "true") return;
+
+    dialog.dataset.initialized = "true";
+    let activeTrigger: HTMLButtonElement | null = null;
+
+    document.querySelectorAll("[data-gallery-open]").forEach((trigger) => {
+      if (!(trigger instanceof HTMLButtonElement)) return;
+
+      trigger.addEventListener("click", () => {
+        const src = trigger.dataset.gallerySrc;
+        if (!src) return;
+
+        activeTrigger = trigger;
+        image.src = src;
+        image.alt = trigger.dataset.galleryAlt ?? "Capture Plum3 agrandie";
+        caption.textContent = trigger.dataset.galleryCaption ?? "";
+        dialog.showModal();
+        closeButton.focus();
+      });
+    });
+
+    closeButton.addEventListener("click", () => dialog.close());
+
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+
+    dialog.addEventListener("close", () => {
+      image.removeAttribute("src");
+      activeTrigger?.focus();
+      activeTrigger = null;
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initPlum3Gallery, { once: true });
+  } else {
+    initPlum3Gallery();
+  }
+</script>
+
+<style>
+  .plum3-hero {
+    padding-top: clamp(4.5rem, 9vw, 7.5rem);
+    padding-bottom: clamp(4rem, 8vw, 6.5rem);
+  }
+
+  .plum3-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+    align-items: center;
+    gap: clamp(2rem, 6vw, 5rem);
+  }
+
+  .plum3-hero-copy {
+    max-width: 46rem;
+  }
+
+  .plum3-title {
+    font-size: clamp(4.25rem, 12vw, 8.5rem);
+    line-height: 0.85;
+    letter-spacing: -0.075em;
+  }
+
+  .plum3-tagline {
+    margin-top: 1.25rem;
+    color: var(--color-cyan-bright);
+    font-size: clamp(1.45rem, 3vw, 2.25rem);
+    font-weight: 650;
+  }
+
+  .plum3-intro {
+    max-width: 43rem;
+    margin-top: 1.4rem;
+    color: var(--color-muted);
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+  }
+
+  .plum3-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .plum3-download-button {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) 1px auto;
+    align-items: center;
+    gap: 0.9rem;
+    min-height: 5rem;
+    padding: 0.65rem 1.15rem 0.65rem 0.75rem;
+    border: 1px solid rgba(84, 214, 255, 0.78);
+    border-radius: 999px;
+    background: linear-gradient(125deg, #07152f 0%, #0a2c4b 52%, #0789b5 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      0 0 0 1px rgba(84, 214, 255, 0.1),
+      0 12px 30px rgba(2, 17, 36, 0.34),
+      0 0 22px rgba(84, 214, 255, 0.16);
+    color: #ffffff;
+    text-decoration: none;
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      filter 180ms ease;
+  }
+
+  .plum3-download-button:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-cyan-bright);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.16),
+      0 0 0 1px rgba(126, 239, 255, 0.14),
+      0 15px 34px rgba(2, 17, 36, 0.4),
+      0 0 28px rgba(84, 214, 255, 0.24);
+    filter: brightness(1.04);
+  }
+
+  .plum3-download-button:focus-visible {
+    outline: 3px solid var(--color-cyan-bright);
+    outline-offset: 4px;
+  }
+
+  .plum3-download-icon {
+    width: 3.25rem;
+    height: 3.25rem;
+    border: 1px solid rgba(126, 239, 255, 0.36);
+    border-radius: 1rem;
+    object-fit: cover;
+    box-shadow: 0 0 16px rgba(84, 214, 255, 0.18);
+  }
+
+  .plum3-download-copy {
+    display: grid;
+    min-width: 0;
+    line-height: 1.15;
+  }
+
+  .plum3-download-title {
+    color: #ffffff;
+    font-size: clamp(0.98rem, 2vw, 1.08rem);
+    font-weight: 750;
+    letter-spacing: -0.01em;
+  }
+
+  .plum3-download-subtitle {
+    margin-top: 0.35rem;
+    color: #7eefff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .plum3-download-divider {
+    width: 1px;
+    height: 2.5rem;
+    background: rgba(126, 239, 255, 0.34);
+  }
+
+  .plum3-download-symbol {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    color: #ffffff;
+    font-size: 1.65rem;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .plum3-download-meta {
+    color: var(--color-muted);
+    font-size: 0.95rem;
+  }
+
+  .plum3-hero-media {
+    display: grid;
+    gap: 0.85rem;
+    margin: 0;
+    padding: clamp(0.75rem, 2vw, 1rem);
+  }
+
+  .plum3-hero-media img {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--color-accent-border-soft);
+    border-radius: 16px;
+    filter: drop-shadow(0 18px 32px rgba(1, 3, 10, 0.38));
+  }
+
+  .plum3-hero-media figcaption,
+  .plum3-feature-card p,
+  .plum3-policy-note,
+  .plum3-direct-download p {
+    color: var(--color-muted);
+  }
+
+  .plum3-section {
+    padding-top: clamp(5rem, 9vw, 7.5rem);
+    padding-bottom: clamp(5rem, 9vw, 7.5rem);
+  }
+
+  .plum3-section .section-heading {
+    max-width: 44rem;
+    margin-bottom: clamp(2.25rem, 4vw, 3.25rem);
+  }
+
+  .plum3-section .section-intro,
+  .plum3-intro {
+    max-width: 40rem;
+  }
+
+  .plum3-status {
+    width: fit-content;
+    padding: 0.4rem 0.75rem;
+    border: 1px solid var(--color-accent-border);
+    border-radius: 999px;
+    background: var(--color-accent-surface-soft);
+    color: var(--color-cyan-bright);
+    font-size: 0.8rem;
+  }
+
+  .plum3-about-grid,
+  .plum3-gallery,
+  .plum3-project-details {
+    display: grid;
+    gap: clamp(1.35rem, 2.5vw, 2rem);
+  }
+
+  .plum3-about-grid,
+  .plum3-project-details {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .plum3-project-card,
+  .plum3-gallery-card,
+  .plum3-detail-card {
+    padding: 1.5rem;
+  }
+
+  .plum3-project-card h3,
+  .plum3-gallery-card h3 {
+    margin: 0 0 0.65rem;
+    color: var(--color-card-title-text);
+  }
+
+  .plum3-project-card p,
+  .plum3-gallery-card p,
+  .plum3-list li {
+    color: var(--color-muted);
+    line-height: 1.65;
+  }
+
+  .plum3-gallery {
+    grid-template-columns: repeat(2, minmax(0, 380px));
+    justify-content: center;
+    align-items: start;
+    gap: clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  .plum3-gallery-card {
+    display: grid;
+    width: 100%;
+    max-width: 380px;
+    gap: 1.1rem;
+    padding: 1rem;
+  }
+
+  .plum3-gallery-trigger {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: 16px;
+    background: transparent;
+    cursor: zoom-in;
+  }
+
+  .plum3-gallery-trigger:focus-visible {
+    outline: 3px solid var(--color-cyan-bright);
+    outline-offset: 4px;
+  }
+
+  .plum3-gallery-trigger img {
+    display: block;
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    border: 1px solid var(--color-accent-border-soft);
+    border-radius: 16px;
+    object-fit: contain;
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .plum3-gallery-trigger:hover img {
+    transform: translateY(-2px);
+    border-color: var(--color-border-strong);
+    box-shadow: 0 12px 26px rgba(1, 3, 10, 0.28);
+  }
+
+  .plum3-gallery-copy {
+    padding: 0 0.35rem 0.35rem;
+  }
+
+  .plum3-gallery-card h3 {
+    font-size: 1.05rem;
+  }
+
+  .plum3-gallery-card p {
+    max-width: 34rem;
+    font-size: 0.94rem;
+  }
+
+  .plum3-lightbox {
+    width: fit-content;
+    max-width: min(94vw, 1280px);
+    max-height: 92vh;
+    padding: clamp(1rem, 2vw, 1.5rem);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(180deg, var(--color-card), var(--color-card-strong));
+    box-shadow: 0 24px 80px rgba(1, 3, 10, 0.72);
+    color: var(--color-text);
+  }
+
+  .plum3-lightbox::backdrop {
+    background: rgba(1, 3, 10, 0.86);
+    backdrop-filter: blur(8px);
+  }
+
+  .plum3-lightbox figure {
+    display: grid;
+    gap: 0.85rem;
+    margin: 0;
+  }
+
+  .plum3-lightbox img {
+    display: block;
+    max-width: min(88vw, 1200px);
+    max-height: 78vh;
+    width: auto;
+    height: auto;
+    border-radius: 14px;
+    object-fit: contain;
+  }
+
+  .plum3-lightbox figcaption {
+    padding-right: 3rem;
+    color: var(--color-muted);
+  }
+
+  .plum3-lightbox-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    border: 1px solid var(--color-border-strong);
+    border-radius: 999px;
+    background: var(--color-card-strong);
+    color: var(--color-text);
+    font: inherit;
+    font-size: 1.55rem;
+    cursor: pointer;
+  }
+
+  .plum3-lightbox-close:hover,
+  .plum3-lightbox-close:focus-visible {
+    border-color: var(--color-cyan-bright);
+    color: var(--color-cyan-bright);
+  }
+
+  .plum3-detail-block {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 0.9rem;
+  }
+
+  .plum3-detail-card {
+    height: 100%;
+  }
+
+  .plum3-stack-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+  }
+
+  .plum3-list {
+    display: grid;
+    gap: 0.7rem;
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+
+  .plum3-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: clamp(1.25rem, 2.5vw, 1.75rem);
+  }
+
+  .plum3-feature-card {
+    min-height: 10.5rem;
+    padding: 1.6rem;
+  }
+
+  .plum3-feature-card h3 {
+    margin: 0 0 0.65rem;
+    color: var(--color-card-title-text);
+    font-size: 1.12rem;
+  }
+
+  .plum3-privacy {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+    padding: clamp(1.35rem, 3.5vw, 2.5rem);
+  }
+
+  .plum3-privacy .section-heading {
+    margin-bottom: 0;
+  }
+
+  .plum3-privacy .section-heading h2 {
+    max-width: 18ch;
+    font-size: clamp(1.65rem, 3.5vw, 2.35rem);
+  }
+
+  .plum3-privacy-label {
+    width: fit-content;
+    text-decoration: none;
+  }
+
+  .plum3-privacy-label:hover,
+  .plum3-privacy-label:focus-visible {
+    color: var(--color-text);
+  }
+
+  .plum3-privacy-link {
+    width: fit-content;
+    margin-top: 1.25rem;
+  }
+
+  .plum3-check-list {
+    display: grid;
+    align-content: center;
+    gap: 0.8rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .plum3-check-list li {
+    position: relative;
+    padding-left: 1.75rem;
+  }
+
+  .plum3-check-list li::before {
+    position: absolute;
+    top: 0.15rem;
+    left: 0;
+    color: var(--color-cyan-bright);
+    content: "✓";
+    font-weight: 800;
+  }
+
+  .plum3-specs {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    overflow: hidden;
+  }
+
+  .plum3-specs div {
+    padding: 1.5rem;
+  }
+
+  .plum3-specs div + div {
+    border-left: 1px solid var(--color-border);
+  }
+
+  .plum3-specs dt {
+    color: var(--color-muted);
+    font-size: 0.85rem;
+  }
+
+  .plum3-specs dd {
+    margin: 0.3rem 0 0;
+    color: var(--color-card-title-text);
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  .plum3-direct-download {
+    margin-top: 1.25rem;
+  }
+
+  .plum3-direct-download a,
+  .plum3-store-links a {
+    color: var(--color-cyan-bright);
+    text-decoration: underline;
+    text-decoration-color: var(--color-border-strong);
+    text-underline-offset: 0.25em;
+  }
+
+  .plum3-direct-download a {
+    overflow-wrap: anywhere;
+  }
+
+  .plum3-support {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: clamp(1.5rem, 5vw, 3rem);
+  }
+
+  .plum3-support h2 {
+    margin-bottom: 0.75rem;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    line-height: 1.1;
+  }
+
+  .plum3-store-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .plum3-direct-download a:hover,
+  .plum3-direct-download a:focus-visible,
+  .plum3-store-links a:hover,
+  .plum3-store-links a:focus-visible {
+    color: var(--color-text);
+  }
+
+  @media (max-width: 800px) {
+    .plum3-hero-grid,
+    .plum3-privacy,
+    .plum3-about-grid,
+    .plum3-project-details {
+      grid-template-columns: 1fr;
+    }
+
+    .plum3-gallery {
+      grid-template-columns: minmax(0, 380px);
+    }
+
+    .plum3-hero-media {
+      justify-self: stretch;
+    }
+
+    .plum3-specs {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .plum3-specs div + div {
+      border-left: 0;
+    }
+
+    .plum3-specs div:nth-child(even) {
+      border-left: 1px solid var(--color-border);
+    }
+
+    .plum3-specs div:nth-child(n + 3) {
+      border-top: 1px solid var(--color-border);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .plum3-hero {
+      padding-top: 3.5rem;
+    }
+
+    .plum3-title {
+      font-size: clamp(4rem, 24vw, 6.5rem);
+    }
+
+    .plum3-actions,
+    .plum3-support {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .plum3-download-button,
+    .plum3-support .button {
+      width: 100%;
+    }
+
+    .plum3-download-button {
+      grid-template-columns: auto minmax(0, 1fr) 1px auto;
+      gap: 0.7rem;
+      min-height: 5.25rem;
+      padding-right: 0.9rem;
+    }
+
+    .plum3-download-icon {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 0.9rem;
+    }
+
+    .plum3-download-title {
+      font-size: 0.96rem;
+    }
+
+    .plum3-download-symbol {
+      width: 1.6rem;
+    }
+
+    .plum3-feature-grid,
+    .plum3-specs {
+      grid-template-columns: 1fr;
+    }
+
+    .plum3-privacy-link {
+      width: 100%;
+    }
+
+    .plum3-section {
+      padding-top: 4.25rem;
+      padding-bottom: 4.25rem;
+    }
+
+    .plum3-section .section-heading {
+      margin-bottom: 2rem;
+    }
+
+    .plum3-gallery-card {
+      max-width: 100%;
+    }
+
+    .plum3-lightbox {
+      max-width: 96vw;
+      padding: 0.75rem;
+    }
+
+    .plum3-lightbox img {
+      max-width: calc(96vw - 1.5rem);
+      max-height: 76vh;
+    }
+
+    .plum3-feature-card {
+      min-height: auto;
+    }
+
+    .plum3-specs div:nth-child(even) {
+      border-left: 0;
+    }
+
+    .plum3-specs div:nth-child(n + 2) {
+      border-top: 1px solid var(--color-border);
+    }
+
+    .plum3-store-links {
+      flex-direction: column;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .plum3-download-button,
+    .plum3-gallery-trigger img {
+      transition: none;
+    }
+  }
+</style>

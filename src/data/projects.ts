@@ -15,6 +15,7 @@ export interface ProjectContent {
   stack: string[];
   status: string;
   proof: string;
+  personal?: boolean;
   group: "main" | "prototype";
   href: string;
   heroImage?: string;
@@ -56,6 +57,7 @@ export const projects: ProjectContent[] = [
     status: "Utilisable · évolution par besoins",
     proof:
       "Documentation des sessions, blocages, apprentissages, synthèses et prochaines étapes.",
+    personal: true,
     group: "main",
     href: "/projets/chronosv3rs/",
     about: {
@@ -119,6 +121,7 @@ export const projects: ProjectContent[] = [
     status: "Utilisable · en évolution",
     proof:
       "Organisation contextuelle des projets et accès rapide aux informations utiles.",
+    personal: true,
     group: "main",
     href: "/projets/vesper/",
     about: {
@@ -220,6 +223,73 @@ export const projects: ProjectContent[] = [
   },
   {
     id: "04",
+    slug: "plum3",
+    title: "Plum3",
+    icon: "PL",
+    tagline: "Éditeur local-first pour écrire, structurer et conserver ses documents.",
+    summary: [
+      "Plum3 est un éditeur d’écriture local-first pour créer, structurer et conserver des documents Markdown et texte directement sur l’appareil.",
+      "Il propose un espace simple et adaptable, sans compte ni cloud obligatoire, avec des thèmes, des modèles et des exports pensés pour accompagner l’écriture.",
+    ],
+    description:
+      "Éditeur d’écriture local-first pour créer, structurer et conserver des documents Markdown et texte directement sur l’appareil.",
+    stack: ["Tauri 2", "React", "TypeScript", "Vite", "Rust", "Markdown"],
+    status: "Utilisable · en évolution",
+    proof:
+      "Conception d’un produit local-first, structuration d’une expérience documentaire et préparation d’une application Windows à sa publication.",
+    group: "main",
+    href: "/plum3/",
+    heroImage: "images/projects/plum3/01-en-plum3-night.jpg",
+    about: {
+      objective:
+        "Offrir un espace d’écriture simple, local et adaptable, sans compte ni cloud obligatoire.",
+      value:
+        "Plum3 permet de créer et d’ouvrir des fichiers Markdown et texte, de les sauvegarder localement, d’adapter les styles d’écriture, d’utiliser les thèmes Aube et Nuit et des modèles, puis d’exporter en PDF ou DOCX dans une interface française ou anglaise.",
+      proof:
+        "Ce projet montre ma capacité à concevoir un produit local-first, à structurer une expérience documentaire et à préparer une application Windows à sa publication.",
+    },
+    evolution: [
+      "Définition du concept",
+      "Base documentaire fonctionnelle",
+      "Identité Aube et Nuit",
+      "Modèles d’écriture",
+      "Export PDF et DOCX",
+      "Préparation de la publication Windows",
+    ],
+    gallery: [
+      {
+        src: "images/projects/plum3/02-en-plum3-aube.jpg",
+        title: "Espace d’écriture — thème Aube",
+        description:
+          "Vue anglaise de l’éditeur avec les réglages de concentration, la sauvegarde locale et les exports PDF et DOCX.",
+      },
+      {
+        src: "images/projects/plum3/03-fr-plum3-aube.jpg",
+        title: "Document en français",
+        description:
+          "Aperçu d’un plan narratif en thème Aube avec les informations du document et la prévisualisation Markdown.",
+      },
+      {
+        src: "images/projects/plum3/04-fr-template-plum3-night.jpg",
+        title: "Modèles d’écriture",
+        description:
+          "Assistant de création en thème Nuit proposant des modèles librement modifiables pour démarrer un document.",
+      },
+    ],
+    learned: [
+      "Structurer un éditeur local-first autour d’un usage d’écriture concret.",
+      "Gérer des fichiers réels et leur sauvegarde directement sur l’appareil.",
+      "Coordonner l’interface et la logique documentaire.",
+      "Préparer une application Windows à sa publication.",
+    ],
+    next: [
+      "Finaliser la publication Windows.",
+      "Consolider les projets multi-documents.",
+      "Poursuivre l’adaptation mobile.",
+    ],
+  },
+  {
+    id: "05",
     slug: "astr4l",
     title: "Astr4l",
     icon: "AS",

@@ -11,30 +11,48 @@ import SiteOverlay from "./SiteOverlay.astro";
 >
   <p id="contact-overlay-title" class="eyebrow">Entrer en contact</p>
   <p class="section-intro">
-    Pour un besoin, une collaboration, une question ou une offre de travail, contacte-moi directement par courriel.
+    Pour une collaboration, une offre de travail, du soutien technique ou un retour
+    sur une application, écris-moi directement.
   </p>
 
   <p class="contact-overlay-email">
     Courriel : <a href="mailto:phey.rainville@hotmail.com">phey.rainville@hotmail.com</a>
+    <br />
+    <span>Ce courriel sert aussi au soutien et aux retours concernant les applications.</span>
   </p>
 
   <form class="contact-overlay-form" data-contact-form>
-    <label>
-      <span>Ton courriel</span>
-      <input
-        type="email"
-        name="email"
-        placeholder="toncourriel@exemple.com"
-        required
-      />
-    </label>
+    <div class="contact-overlay-fields">
+      <label>
+        <span>Raison du message</span>
+        <select name="reason" required data-contact-reason>
+          <option value="" selected disabled>Choisir une raison</option>
+          <option value="Soutien technique">Soutien technique</option>
+          <option value="Retour sur une application">Retour sur une application</option>
+          <option value="Collaboration">Collaboration</option>
+          <option value="Offre de travail">Offre de travail</option>
+          <option value="Autre">Autre</option>
+        </select>
+      </label>
+
+      <label>
+        <span>Ton courriel</span>
+        <input
+          type="email"
+          name="email"
+          placeholder="toncourriel@exemple.com"
+          required
+        />
+      </label>
+    </div>
 
     <label>
       <span>Message</span>
       <textarea
         name="message"
-        rows="6"
-        placeholder="Présente brièvement ton besoin, ton projet ou ton opportunité."
+        rows="3"
+        placeholder="Présente brièvement ton besoin."
+        data-contact-message
         required
       ></textarea>
     </label>
@@ -52,22 +70,43 @@ import SiteOverlay from "./SiteOverlay.astro";
   const initContactOverlay = () => {
     const overlay = document.querySelector('[data-site-overlay="contact"]');
     const form = document.querySelector("[data-contact-form]");
+    const reasonSelect = document.querySelector("[data-contact-reason]");
+    const messageField = document.querySelector("[data-contact-message]");
 
     if (!(overlay instanceof HTMLElement)) return;
     if (overlay.dataset.initialized === "true") return;
     overlay.dataset.initialized = "true";
+
+    const messagePlaceholders: Record<string, string> = {
+      "Soutien technique": "Décris le problème rencontré et indique l’application concernée.",
+      "Retour sur une application": "Indique l’application concernée et partage ton retour.",
+      Collaboration: "Présente brièvement la collaboration envisagée.",
+      "Offre de travail": "Présente le rôle, le contexte et les prochaines étapes proposées.",
+      Autre: "Présente brièvement la raison de ton message.",
+    };
+
+    if (
+      reasonSelect instanceof HTMLSelectElement &&
+      messageField instanceof HTMLTextAreaElement
+    ) {
+      reasonSelect.addEventListener("change", () => {
+        messageField.placeholder =
+          messagePlaceholders[reasonSelect.value] ?? "Présente brièvement ton besoin.";
+      });
+    }
 
     if (form instanceof HTMLFormElement) {
       form.addEventListener("submit", (event) => {
         event.preventDefault();
 
         const formData = new FormData(form);
+        const reason = String(formData.get("reason") ?? "").trim();
         const email = String(formData.get("email") ?? "").trim();
         const message = String(formData.get("message") ?? "").trim();
         const body = encodeURIComponent(
-          `Courriel : ${email}\n\nMessage :\n${message}`,
+          `Raison : ${reason}\nCourriel : ${email}\n\nMessage :\n${message}`,
         );
-        const subject = encodeURIComponent("Prise de contact via Ph3yNyx.Studio");
+        const subject = encodeURIComponent(`Ph3yNyx.Studio — ${reason}`);
 
         window.location.href =
           `mailto:phey.rainville@hotmail.com?subject=${subject}&body=${body}`;

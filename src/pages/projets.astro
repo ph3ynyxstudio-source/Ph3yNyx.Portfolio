@@ -2,11 +2,24 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionBackground from "../components/backgrounds/SectionBackground.astro";
 import PageShell from "../components/layout/PageShell.astro";
+import SiteOverlay from "../components/layout/SiteOverlay.astro";
 import { projects } from "../data/projects";
 import { withBase } from "../utils/base-path";
 
 const mainProjects = projects.filter((project) => project.group === "main");
 const prototypeProjects = projects.filter((project) => project.group === "prototype");
+const projectGroups = [
+  {
+    eyebrow: "Projets principaux utilisables",
+    title: "Quatre outils principaux, chacun avec son usage et sa progression.",
+    items: mainProjects,
+  },
+  {
+    eyebrow: "Prototype utilisable / expérimental",
+    title: "Un terrain d’essai visuel, utilisable mais encore en phase prototype.",
+    items: prototypeProjects,
+  },
+];
 ---
 
 <BaseLayout
@@ -26,95 +39,73 @@ const prototypeProjects = projects.filter((project) => project.group === "protot
         </p>
       </div>
 
-      <section class="projects-group">
-        <div class="section-heading projects-group-heading">
-          <p class="eyebrow">Projets principaux utilisables</p>
-          <h2>Trois outils principaux, chacun avec son usage et sa progression.</h2>
-        </div>
+      {projectGroups.map((group) => (
+        <section class="projects-group">
+          <div class="section-heading projects-group-heading">
+            <p class="eyebrow">{group.eyebrow}</p>
+            <h2>{group.title}</h2>
+          </div>
 
-        <div class="project-showcase-grid">
-          {mainProjects.map((project) => (
-            <article class="project-showcase-card glass-panel">
-              {(() => {
-                const projectHref = withBase(`projets/${project.slug}/`);
-                return (
-                  <>
-              <div class="project-showcase-head">
-                <p class="eyebrow">Projet {project.id}</p>
-                <span class="project-status">{project.status}</span>
-              </div>
+          <div class="project-showcase-grid">
+            {group.items.map((project) => {
+              const projectHref = withBase(project.href);
+              const overlayId = `project-${project.slug}`;
+              const overlayTitleId = `${overlayId}-title`;
 
-              <h2>
-                <a class="project-showcase-link" href={projectHref}>{project.title}</a>
-              </h2>
-              <p class="project-showcase-description">{project.description}</p>
+              return (
+                <>
+                  <article class="project-showcase-card glass-panel">
+                    <div class="project-showcase-head">
+                      <p class="eyebrow">Projet {project.id}</p>
+                      {project.personal && (
+                        <span class="project-personal-badge">Application personnelle</span>
+                      )}
+                    </div>
 
-              <div class="square-card-tags">
-                {project.stack.map((item) => (
-                  <span class="tag">{item}</span>
-                ))}
-              </div>
+                    <h2>{project.title}</h2>
+                    <p class="project-showcase-description">{project.description}</p>
 
-              <div class="project-proof">
-                <p class="eyebrow">Preuve observable</p>
-                <p>{project.proof}</p>
-              </div>
+                    <button
+                      class="button button-secondary project-more-button"
+                      type="button"
+                      data-site-overlay-open={overlayId}
+                      aria-haspopup="dialog"
+                    >
+                      Voir plus
+                    </button>
+                  </article>
 
-              <a class="project-showcase-link-secondary" href={projectHref}>
-                Ouvrir la fiche projet
-              </a>
-                  </>
-                );
-              })()}
-            </article>
-          ))}
-        </div>
-      </section>
+                  <SiteOverlay
+                    overlayId={overlayId}
+                    titleId={overlayTitleId}
+                    closeLabel={`Fermer les détails de ${project.title}`}
+                    panelClass="project-overlay-panel"
+                    contentClass="project-overlay-content"
+                  >
+                    <p class="eyebrow">Projet {project.id}</p>
+                    <h2 id={overlayTitleId}>{project.title}</h2>
+                    <span class="project-status">{project.status}</span>
+                    <p class="project-overlay-summary">{project.tagline}</p>
 
-      <section class="projects-group">
-        <div class="section-heading projects-group-heading">
-          <p class="eyebrow">Prototype utilisable / expérimental</p>
-          <h2>Un terrain d’essai visuel, utilisable mais encore en phase prototype.</h2>
-        </div>
+                    <div class="square-card-tags">
+                      {project.stack.map((item) => <span class="tag">{item}</span>)}
+                    </div>
 
-        <div class="project-showcase-grid">
-          {prototypeProjects.map((project) => (
-            <article class="project-showcase-card glass-panel">
-              {(() => {
-                const projectHref = withBase(`projets/${project.slug}/`);
-                return (
-                  <>
-              <div class="project-showcase-head">
-                <p class="eyebrow">Projet {project.id}</p>
-                <span class="project-status">{project.status}</span>
-              </div>
+                    <div class="project-proof">
+                      <p class="eyebrow">Preuve observable</p>
+                      <p>{project.proof}</p>
+                    </div>
 
-              <h2>
-                <a class="project-showcase-link" href={projectHref}>{project.title}</a>
-              </h2>
-              <p class="project-showcase-description">{project.description}</p>
-
-              <div class="square-card-tags">
-                {project.stack.map((item) => (
-                  <span class="tag">{item}</span>
-                ))}
-              </div>
-
-              <div class="project-proof">
-                <p class="eyebrow">Preuve observable</p>
-                <p>{project.proof}</p>
-              </div>
-
-              <a class="project-showcase-link-secondary" href={projectHref}>
-                Ouvrir la fiche projet
-              </a>
-                  </>
-                );
-              })()}
-            </article>
-          ))}
-        </div>
-      </section>
+                    <a class="button button-primary project-overlay-link" href={projectHref}>
+                      Ouvrir la fiche projet
+                    </a>
+                  </SiteOverlay>
+                </>
+              );
+            })}
+          </div>
+        </section>
+      ))}
     </PageShell>
   </SectionBackground>
 </BaseLayout>
@@ -133,21 +124,39 @@ const prototypeProjects = projects.filter((project) => project.group === "protot
     margin-bottom: 0;
   }
 
-  .project-showcase-link,
-  .project-showcase-link-secondary {
-    color: inherit;
-    text-decoration: none;
+  .project-showcase-head {
+    justify-content: flex-start;
+    flex-wrap: wrap;
   }
 
-  .project-showcase-link:hover,
-  .project-showcase-link:focus-visible,
-  .project-showcase-link-secondary:hover,
-  .project-showcase-link-secondary:focus-visible {
-    color: var(--color-cyan-bright);
+  .project-personal-badge {
+    padding: 0.3rem 0.6rem;
+    border: 1px solid var(--color-accent-border);
+    border-radius: 999px;
+    background: var(--color-accent-surface-soft);
+    color: var(--color-muted);
+    font-size: 0.72rem;
   }
 
-  .project-showcase-link-secondary {
+  .project-more-button,
+  .project-overlay-link {
     width: fit-content;
-    color: var(--color-cyan-bright);
+  }
+
+  .project-more-button {
+    margin-top: auto;
+  }
+
+  .project-overlay-summary,
+  .project-proof p:last-child {
+    color: var(--color-muted);
+  }
+
+  :global(.project-overlay-panel) {
+    width: min(100%, 680px);
+  }
+
+  :global(.project-overlay-content) {
+    align-content: start;
   }
 </style>

@@ -1,0 +1,34 @@
+---
+import SiteOverlay from "./SiteOverlay.astro";
+import { withBase } from "../../utils/base-path";
+
+const privacyHref = withBase("plum3/privacy/");
+---
+
+<SiteOverlay
+  overlayId="privacy"
+  titleId="privacy-overlay-title"
+  closeLabel="Fermer le résumé de la politique de confidentialité"
+  panelClass="privacy-overlay-panel"
+  contentClass="privacy-overlay-content"
+>
+  <p id="privacy-overlay-title" class="eyebrow">Confidentialité de Plum3</p>
+  <h2>Vos documents restent sur votre appareil.</h2>
+  <p class="privacy-overlay-summary">
+    Plum3 fonctionne sans compte utilisateur. L’application ne collecte ni ne
+    transmet vos documents et n’intègre aucune télémétrie, publicité, mesure
+    d’audience ou analyse comportementale.
+  </p>
+  <p class="privacy-overlay-summary">
+    Les préférences, l’historique récent et les éventuels brouillons de
+    récupération sont conservés localement sur votre appareil.
+  </p>
+  <div class="privacy-overlay-actions">
+    <a class="button button-primary" href={privacyHref}>
+      Lire la politique complète
+    </a>
+    <button class="button button-secondary" type="button" data-site-overlay-close>
+      Fermer
+    </button>
+  </div>
+</SiteOverlay>

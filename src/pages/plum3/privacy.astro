@@ -1,0 +1,274 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionBackground from "../../components/backgrounds/SectionBackground.astro";
+import PageShell from "../../components/layout/PageShell.astro";
+import { withBase } from "../../utils/base-path";
+
+const plum3Href = withBase("plum3/");
+---
+
+<BaseLayout
+  title="Politique de confidentialité de Plum3 | Ph3yNyx.Studio"
+  description="Politique de confidentialité officielle de l’application Plum3."
+>
+  <main>
+    <SectionBackground>
+      <PageShell class="privacy-page">
+        <a class="privacy-back-link" href={plum3Href}>← Retour vers Plum3</a>
+
+        <article class="privacy-card glass-panel">
+          <header class="privacy-header">
+            <p class="eyebrow">Plum3 · Confidentialité</p>
+            <h1>Politique de confidentialité de Plum3</h1>
+            <p class="privacy-updated">Dernière mise à jour : 15 juillet 2026</p>
+          </header>
+
+          <section>
+            <h2>1. Présentation</h2>
+            <p>Plum3 est un éditeur Markdown conçu pour fonctionner localement sur votre appareil.</p>
+            <p>L’application ne nécessite aucun compte utilisateur. Elle n’intègre aucune télémétrie, publicité, technologie de suivi ou analyse comportementale.</p>
+          </section>
+
+          <section>
+            <h2>2. Documents et textes</h2>
+            <p>Plum3 ne collecte pas et ne transmet pas vos documents ou leur contenu.</p>
+            <p>Les documents Markdown ou texte sont ouverts et enregistrés uniquement sur votre appareil, aux emplacements que vous choisissez. Les fichiers exportés en PDF ou Word sont également enregistrés dans un emplacement local choisi par vous.</p>
+            <p>Aucun document, texte ou fichier exporté n’est envoyé automatiquement sur Internet.</p>
+          </section>
+
+          <section>
+            <h2>3. Données stockées localement</h2>
+            <p>Plum3 conserve certaines informations sur votre appareil afin de mémoriser vos choix et de permettre la récupération de votre travail.</p>
+            <p>Ces informations peuvent comprendre :</p>
+            <ul>
+              <li>la langue choisie, en français ou en anglais ;</li>
+              <li>le thème Aube ou Nuit ;</li>
+              <li>les réglages d’écriture, notamment la police, la taille du texte, l’interligne, la largeur de lecture et les palettes de couleurs ;</li>
+              <li>les préférences d’affichage des compteurs de mots, de caractères et de lignes ;</li>
+              <li>l’activation ou la désactivation de l’aperçu Markdown ;</li>
+              <li>l’activation ou la désactivation de la sauvegarde automatique ;</li>
+              <li>un brouillon de récupération ;</li>
+              <li>l’historique des documents récents.</li>
+            </ul>
+            <p>Le mode concentration et l’état ouvert ou replié des panneaux ne sont pas conservés au redémarrage de l’application.</p>
+          </section>
+
+          <section>
+            <h2>4. Brouillons de récupération</h2>
+            <p>Plum3 peut enregistrer localement un brouillon de récupération pour protéger un travail qui n’a pas encore été enregistré dans un fichier.</p>
+            <p>Un brouillon de récupération peut contenir :</p>
+            <ul>
+              <li>le nom du document ;</li>
+              <li>le texte complet du document ;</li>
+              <li>la date et l’heure de l’enregistrement du brouillon.</li>
+            </ul>
+            <p>Un brouillon peut être créé lorsque la sauvegarde automatique est activée pour un document qui n’a pas encore d’emplacement, ou lorsque vous choisissez de fermer un document modifié sans l’enregistrer normalement.</p>
+            <p>Lors du prochain lancement, Plum3 peut restaurer ce brouillon dans l’éditeur. Le brouillon local est supprimé après l’enregistrement réussi du document ou lorsqu’il est remplacé par un autre document.</p>
+          </section>
+
+          <section>
+            <h2>5. Historique des documents récents</h2>
+            <p>Plum3 conserve localement une liste pouvant contenir jusqu’à dix chemins de fichiers récemment ouverts, enregistrés ou renommés.</p>
+            <p>Cette liste permet de retrouver rapidement les documents récents. Les chemins peuvent révéler le nom du fichier et l’emplacement où il est enregistré sur votre appareil.</p>
+            <p>Vous pouvez retirer une entrée de l’historique depuis l’application. Cette action retire uniquement le chemin de la liste et ne supprime pas le document lui-même.</p>
+          </section>
+
+          <section>
+            <h2>6. Comptes utilisateurs</h2>
+            <p>Plum3 ne propose pas de création de compte, de connexion ou de profil en ligne.</p>
+            <p>Aucun identifiant, mot de passe ou jeton d’authentification n’est demandé ou enregistré par l’application.</p>
+          </section>
+
+          <section>
+            <h2>7. Télémétrie, publicité et analyse</h2>
+            <p>Plum3 n’intègre aucun système de :</p>
+            <ul>
+              <li>télémétrie ;</li>
+              <li>suivi publicitaire ;</li>
+              <li>publicité personnalisée ;</li>
+              <li>analyse comportementale ;</li>
+              <li>mesure d’audience ;</li>
+              <li>suivi de l’utilisation de l’application.</li>
+            </ul>
+            <p>Les compteurs de mots, de caractères et de lignes sont calculés localement et ne sont pas transmis.</p>
+          </section>
+
+          <section>
+            <h2>8. Connexions réseau</h2>
+            <p>Plum3 n’utilise aucune connexion Internet pour ouvrir, modifier, analyser, enregistrer ou exporter vos documents.</p>
+            <p>L’application ne transmet automatiquement aucune donnée à Ph3yNyx.Studio ou à un service tiers.</p>
+            <p>Après une action explicite de votre part, Plum3 peut demander au système d’exploitation :</p>
+            <ul>
+              <li>d’ouvrir le site <a href="https://ph3ynyx.dev/">https://ph3ynyx.dev/</a> dans votre navigateur par défaut ;</li>
+              <li>d’ouvrir votre client de messagerie avec un courriel de retour prérempli.</li>
+            </ul>
+            <p>Ces applications externes ne sont jamais ouvertes automatiquement au démarrage ou pendant l’écriture. Elles sont ouvertes uniquement lorsque vous cliquez sur le lien du site ou sur le bouton permettant d’envoyer un retour par courriel.</p>
+            <p>Le courriel prérempli peut contenir la version de Plum3 et des champs de diagnostic à compléter. Plum3 n’y ajoute aucun document, aucun texte édité et aucune pièce jointe.</p>
+          </section>
+
+          <section>
+            <h2>9. Services tiers</h2>
+            <p>Plum3 ne partage aucune donnée automatiquement avec des services tiers.</p>
+            <p>Toutefois, si vous choisissez de visiter le site du studio ou d’envoyer un courriel, votre navigateur, votre client de messagerie et leurs fournisseurs peuvent traiter certaines données nécessaires à la connexion ou à l’envoi du message.</p>
+            <p>Ces traitements sont effectués par les applications ou services que vous choisissez d’utiliser et sont soumis à leurs propres politiques de confidentialité.</p>
+          </section>
+
+          <section>
+            <h2>10. Courriels de retour</h2>
+            <p>Lorsque vous utilisez la fonction de retour par courriel, Plum3 prépare un message dans votre client de messagerie. Le message n’est pas envoyé automatiquement.</p>
+            <p>Vous pouvez consulter, modifier ou annuler le message avant son envoi. Si vous décidez de l’envoyer, Ph3yNyx.Studio recevra uniquement les informations présentes dans ce courriel, y compris celles que vous aurez ajoutées volontairement.</p>
+            <p>Il est recommandé de ne pas joindre de document ou d’information confidentielle à moins que vous souhaitiez expressément les communiquer.</p>
+          </section>
+
+          <section>
+            <h2>11. Conservation et suppression des données locales</h2>
+            <p>Les préférences, l’historique récent et les brouillons de récupération restent sur votre appareil tant qu’ils ne sont pas supprimés ou remplacés par l’application, par vous-même ou par le système.</p>
+            <p>Plum3 ne possède aucune copie distante de ces données et ne peut pas les consulter ou les supprimer à distance.</p>
+          </section>
+
+          <section>
+            <h2>12. Sécurité et contrôle de vos fichiers</h2>
+            <p>Plum3 accède aux fichiers et emplacements que vous choisissez dans le cadre de l’ouverture, de l’enregistrement, du renommage ou de l’utilisation de documents récents.</p>
+            <p>La sécurité des documents dépend également de la sécurité de votre appareil, de votre compte Windows, de vos sauvegardes et des emplacements où vous choisissez d’enregistrer les fichiers.</p>
+          </section>
+
+          <section>
+            <h2>13. Modifications de cette politique</h2>
+            <p>Cette politique peut être mise à jour si le fonctionnement de Plum3 change.</p>
+            <p>Toute nouvelle version devra décrire fidèlement les fonctionnalités réellement présentes dans l’application. La date de mise à jour indiquée en haut de la politique permettra d’identifier la version applicable.</p>
+          </section>
+
+          <section>
+            <h2>14. Contact</h2>
+            <p>Pour toute question concernant cette politique ou le fonctionnement de Plum3, vous pouvez utiliser la fonction de retour par courriel intégrée à l’application.</p>
+            <p>
+              Courriel :<br />
+              <a href="mailto:phey.rainville@hotmail.com">phey.rainville@hotmail.com</a>
+            </p>
+            <p>Le client de messagerie ne sera ouvert qu’après votre action explicite, et aucun message ne sera envoyé sans votre confirmation.</p>
+          </section>
+        </article>
+
+        <a class="privacy-back-link privacy-back-link-bottom" href={plum3Href}>
+          ← Retour vers Plum3
+        </a>
+      </PageShell>
+    </SectionBackground>
+  </main>
+</BaseLayout>
+
+<style>
+  .privacy-page {
+    padding-top: clamp(3.5rem, 7vw, 6rem);
+    padding-bottom: clamp(4.5rem, 8vw, 7rem);
+  }
+
+  .privacy-back-link {
+    display: inline-flex;
+    width: fit-content;
+    margin-bottom: 1.5rem;
+    color: var(--color-cyan-bright);
+    font-weight: 650;
+  }
+
+  .privacy-back-link:hover,
+  .privacy-back-link:focus-visible {
+    color: var(--color-text);
+  }
+
+  .privacy-back-link-bottom {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .privacy-card {
+    width: min(100%, 720px);
+    margin: 0 auto;
+    padding: clamp(1.5rem, 4.5vw, 3.25rem);
+  }
+
+  .privacy-header {
+    display: grid;
+    gap: 1rem;
+    padding-bottom: clamp(2rem, 5vw, 3.5rem);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .privacy-header .eyebrow {
+    margin-bottom: 0;
+  }
+
+  .privacy-header h1 {
+    max-width: 18ch;
+    font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+  }
+
+  .privacy-updated {
+    color: var(--color-cyan-bright);
+    font-weight: 650;
+  }
+
+  .privacy-card section {
+    display: grid;
+    gap: 1rem;
+    padding-top: clamp(2.5rem, 5vw, 3.5rem);
+  }
+
+  .privacy-card section + section {
+    margin-top: clamp(2.75rem, 6vw, 4rem);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .privacy-card h2 {
+    color: var(--color-card-title-text);
+    font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+    line-height: 1.3;
+  }
+
+  .privacy-card p,
+  .privacy-card li {
+    max-width: 60ch;
+    color: var(--color-muted);
+    line-height: 1.75;
+  }
+
+  .privacy-card ul {
+    display: grid;
+    gap: 0.65rem;
+    margin: 0;
+    padding-left: 1.35rem;
+  }
+
+  .privacy-card a:not(.privacy-back-link) {
+    color: var(--color-cyan-bright);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    overflow-wrap: anywhere;
+  }
+
+  @media (max-width: 640px) {
+    .privacy-page {
+      padding-top: 2.5rem;
+      padding-bottom: 4rem;
+    }
+
+    .privacy-card {
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+    }
+
+    .privacy-header h1 {
+      font-size: clamp(1.75rem, 8vw, 2.25rem);
+    }
+
+    .privacy-card section {
+      padding-top: 2.25rem;
+    }
+
+    .privacy-card section + section {
+      margin-top: 2.5rem;
+    }
+  }
+</style>
