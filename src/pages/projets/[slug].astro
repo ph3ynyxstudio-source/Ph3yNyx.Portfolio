@@ -377,16 +377,50 @@ const heroImage = assetPath(project.heroImage ?? project.gallery[0].src);
 
   @media (max-width: 640px) {
     .project-page {
-      padding-top: 1.5rem;
-      padding-bottom: 4rem;
+      gap: 1rem;
+      padding-top: 1rem;
+      padding-bottom: 3rem;
     }
 
     .project-hero,
     .project-card {
-      padding: 1.2rem;
+      padding: 1rem;
     }
 
     .project-title-row {
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+    }
+
+    .project-icon {
+      width: 3.2rem;
+      height: 3.2rem;
+      border-radius: 14px;
+    }
+
+    .project-title {
+      font-size: clamp(1.85rem, 9vw, 2.55rem);
+    }
+
+    .project-tagline,
+    .project-summary p,
+    .project-about-block p,
+    .project-gallery-copy p,
+    .project-list li {
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .project-hero-media img {
+      min-height: 180px;
+      max-height: 320px;
+    }
+
+    .project-section {
+      gap: 0.65rem;
+    }
+
+    .project-gallery {
       grid-template-columns: 1fr;
     }
   }

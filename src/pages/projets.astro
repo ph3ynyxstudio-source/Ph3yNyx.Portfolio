@@ -159,4 +159,24 @@ const projectGroups = [
   :global(.project-overlay-content) {
     align-content: start;
   }
+
+  @media (max-width: 768px) {
+    .projects-group {
+      gap: 1rem;
+    }
+
+    .projects-group + .projects-group {
+      margin-top: 2.25rem;
+    }
+
+    .project-personal-badge {
+      font-size: 0.68rem;
+    }
+
+    :global(.project-overlay-panel) {
+      max-height: calc(100dvh - 1rem);
+      padding: 1rem;
+      overflow-y: auto;
+    }
+  }
 </style>

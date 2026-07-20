@@ -914,11 +914,32 @@ const privacyPrinciples = [
 
   @media (max-width: 640px) {
     .plum3-hero {
-      padding-top: 3.5rem;
+      padding-top: 2.75rem;
+      padding-bottom: 3.25rem;
+    }
+
+    .plum3-hero-grid {
+      gap: 1.5rem;
     }
 
     .plum3-title {
-      font-size: clamp(4rem, 24vw, 6.5rem);
+      font-size: clamp(3.25rem, 20vw, 5.1rem);
+      letter-spacing: -0.06em;
+    }
+
+    .plum3-tagline {
+      margin-top: 0.8rem;
+      font-size: clamp(1.15rem, 6vw, 1.55rem);
+    }
+
+    .plum3-intro {
+      margin-top: 1rem;
+      font-size: 0.98rem;
+      line-height: 1.55;
+    }
+
+    .plum3-actions {
+      margin-top: 1.45rem;
     }
 
     .plum3-actions,
@@ -935,7 +956,7 @@ const privacyPrinciples = [
     .plum3-download-button {
       grid-template-columns: auto minmax(0, 1fr) 1px auto;
       gap: 0.7rem;
-      min-height: 5.25rem;
+      min-height: 4.75rem;
       padding-right: 0.9rem;
     }
 
@@ -958,17 +979,45 @@ const privacyPrinciples = [
       grid-template-columns: 1fr;
     }
 
+    .plum3-project-card,
+    .plum3-gallery-card,
+    .plum3-detail-card,
+    .plum3-feature-card {
+      padding: 1rem;
+    }
+
+    .plum3-project-card p,
+    .plum3-gallery-card p,
+    .plum3-list li,
+    .plum3-check-list li,
+    .plum3-direct-download,
+    .plum3-store-links {
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .plum3-project-card h3,
+    .plum3-gallery-card h3,
+    .plum3-feature-card h3 {
+      font-size: 1.02rem;
+    }
+
+    .plum3-privacy {
+      gap: 1.25rem;
+      padding: 1rem;
+    }
+
     .plum3-privacy-link {
       width: 100%;
     }
 
     .plum3-section {
-      padding-top: 4.25rem;
-      padding-bottom: 4.25rem;
+      padding-top: 3.25rem;
+      padding-bottom: 3.25rem;
     }
 
     .plum3-section .section-heading {
-      margin-bottom: 2rem;
+      margin-bottom: 1.35rem;
     }
 
     .plum3-gallery-card {
@@ -987,6 +1036,19 @@ const privacyPrinciples = [
 
     .plum3-feature-card {
       min-height: auto;
+    }
+
+    .plum3-specs div {
+      padding: 1rem;
+    }
+
+    .plum3-support {
+      gap: 1.25rem;
+      padding: 1rem;
+    }
+
+    .plum3-support h2 {
+      font-size: clamp(1.5rem, 7vw, 2rem);
     }
 
     .plum3-specs div:nth-child(even) {
