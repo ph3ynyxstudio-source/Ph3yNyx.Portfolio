@@ -15,7 +15,7 @@ const observableSkills = [
   "Clarification d’idées",
   "Structuration de projets",
   "Documentation",
-  "Développement assisté par IA",
+  "Développement avec assistance IA",
   "Test responsive / interface",
   "Organisation de contenu",
   "Apprentissage autonome",
@@ -28,49 +28,57 @@ const toolGroups: Array<{
   detail?: string;
 }> = [
   {
-    title: "Environnement principal",
+    title: "Environnement de développement",
     items: ["VS Code", "Git", "GitHub", "npm", "pnpm"],
   },
   {
-    title: "Frontend / interfaces",
+    title: "Frontend et interfaces",
     items: ["React", "Vite", "TypeScript", "HTML", "CSS", "Tailwind CSS"],
   },
   {
-    title: "Mobile / exploration",
+    title: "Mobile en exploration",
     items: ["Flutter", "Dart", "Android Studio"],
   },
   {
-    title: "Cloud / backend exploré",
+    title: "Cloud et backend en exploration",
     items: ["Firebase", "Google Cloud"],
   },
   {
-    title: "IA comme assistant",
+    title: "Outils d’assistance IA",
     items: ["ChatGPT", "Codex", "Gemini", "Perplexity"],
   },
   {
-    title: "Design / création visuelle",
+    title: "Design et création visuelle",
     items: ["Inkscape", "Adobe Express", "Canva"],
   },
 ];
 
 const keyProjects = [
   {
-    title: "Chr0nosV3rs",
+    title: "Plum3",
     description:
-      "Outil local de suivi de sessions, de documentation de progression et d’organisation du contexte de travail.",
-  },
-  {
-    title: "VespΣr",
-    description:
-      "Cockpit local de projets centralisant documents, sessions, contexte et outils de travail.",
+      "Éditeur d’écriture local-first conçu pour créer, organiser et conserver des documents directement sur l’appareil.",
+    details: [
+      "Version Windows fonctionnelle et téléchargeable.",
+      "Adaptation mobile en préparation.",
+    ],
   },
   {
     title: "Lun△rMood",
     description:
-      "Application en reconstruction avec Flutter/Dart pour l’observation personnelle.",
+      "Application d’observation personnelle permettant de suivre l’énergie, les émotions et certaines habitudes.",
     details: [
-      "Premier MVP validé avec React, Vite et TypeScript.",
-      "Reconstruction visant une architecture local-first plus durable.",
+      "Premier MVP réalisé avec React, Vite et TypeScript.",
+      "Reconstruction en Flutter et Dart avec une approche local-first.",
+    ],
+  },
+  {
+    title: "Chr0nosV3rs",
+    description:
+      "Outil local de suivi de sessions, de documentation de progression et d’organisation du contexte de travail.",
+    details: [
+      "Conçu pour conserver une continuité d’une session de travail à l’autre.",
+      "Permet de suivre les avancées, les blocages et les prochaines étapes.",
     ],
   },
 ];
@@ -98,7 +106,7 @@ const keyProjects = [
               <p class="eyebrow">CV numérique</p>
               <h1 class="page-title cv-name">Phey Rainville</h1>
               <p class="cv-role">
-                Développeur web junior · Créateur d’outils numériques local-first
+                Développeur web junior · Créateur d’outils numériques local-firstDéveloppeur junior · Concepteur d’outils et d’interfaces numériques
               </p>
               <div class="cv-meta-list">
                 <p>Gatineau, Québec</p>
@@ -121,20 +129,20 @@ const keyProjects = [
 
           <div class="cv-copy">
             <p>
-             Je conçois des outils numériques, prototypes et applications locales 
+             Je conçois des outils numériques, des prototypes et applications locales 
              pour organiser l’information, documenter la progression 
              et répondre à des besoins concrets.
             </p>
             <p>
              Autodidacte, je développe mes projets 
              par étapes : clarifier le besoin, construire un MVP,
-            tester, documenter, puis améliorer progressivement.
+            tester, documenter et améliorer progressivement.
             </p>
             <p>
-              Je recherche une première expérience en entreprise afin d’apprendre au contact
-               d’une équipe, contribuer à des projets réels et évoluer 
-               progressivement dans le domaine du développement logiciel.
-            </p>
+             Je souhaite intégrer une équipe afin de contribuer à 
+             des projets concrets, consolider mes compétences et 
+             découvrir le fonctionnement professionnel du développement numérique.          
+             </p>
           </div>
 
           <a class="button button-secondary cv-project-link" href={projectsHref}>
@@ -208,11 +216,20 @@ const keyProjects = [
 
           <div class="cv-summary-grid">
             <article class="cv-summary-block">
-              <h3>Formation</h3>
-              <p>Formation IT prévue en octobre 2026.</p>
-              <p>Place confirmée pour une prochaine cohorte.</p>
-              <p>Équivalence de niveau secondaire (TENS).</p>
-            </article>
+  <h3>Formation</h3>
+
+  <p>
+    Projet de formation : AEC Architecture et gestion de réseaux,
+    Formation continue du Cégep de l’Outaouaiss.
+  </p>
+
+  <p>Cohorte envisagée en janvier 2027.</p>
+
+  <p>
+    Attestation d’équivalence de niveau de scolarité de cinquième année du
+    secondaire (AENS).
+  </p>
+</article>
 
             <article class="cv-summary-block">
               <h3>Expérience professionnelle transférable</h3>
@@ -242,14 +259,14 @@ const keyProjects = [
                 besoins concrets, des tests et une progression par étapes.
               </p>
               <p>
-                J’ai aussi une facilité naturelle à aider les autres, clarifier
-                les besoins et rendre l’information plus accessible dans un
-                contexte d’équipe.
+                J’aime écouter les besoins, clarifier les problèmes et
+                rendre l’information plus accessible. Je souhaite continuer à développer
+                 ces capacités dans un contexte d’équipe.
               </p>
             </article>
 
             <article class="cv-summary-block">
-              <h3>Disponibilité / objectif réaliste</h3>
+              <h3>Disponibilité / objectif </h3>
               <p>
                 Je souhaite évoluer dans le milieu technologique et numérique,
                 notamment en développement, conception d’outils, interfaces ou infrastructures TI
