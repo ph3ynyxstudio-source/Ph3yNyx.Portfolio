@@ -9,11 +9,20 @@ import { assetPath } from "../utils/base-path";
 interface Props {
   title?: string;
   description?: string;
+  lang?: "fr" | "en";
+  canonicalHref?: string;
+  alternateHrefLangs?: Array<{
+    lang: string;
+    href: string;
+  }>;
 }
 
 const {
   title = "Ph3yNyx.Studio",
   description = "Portfolio developpeur et studio d’outils numeriques local-first.",
+  lang = "fr",
+  canonicalHref,
+  alternateHrefLangs = [],
 } = Astro.props;
 
 const faviconSvg = assetPath("images/logo-ph3ynyx-studio.svg");
@@ -25,7 +34,7 @@ const themeStorageKey = "ph3ynyx-theme";
 
 <!doctype html>
 <html
-  lang="fr"
+  lang={lang}
   style={`--hero-bg-image: ${heroBackgroundImage}; --section-bg-image: ${sectionBackgroundImage};`}
 >
   <head>
@@ -33,6 +42,10 @@ const themeStorageKey = "ph3ynyx-theme";
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    {canonicalHref && <link rel="canonical" href={canonicalHref} />}
+    {alternateHrefLangs.map(({ lang: hrefLang, href }) => (
+      <link rel="alternate" hreflang={hrefLang} href={href} />
+    ))}
     <link rel="icon" type="image/svg+xml" href={faviconSvg} />
     <link rel="icon" type="image/png" href={faviconPng} />
     <script is:inline define:vars={{ themeStorageKey }}>

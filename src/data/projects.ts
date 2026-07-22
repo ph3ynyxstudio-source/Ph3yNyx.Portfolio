@@ -226,13 +226,13 @@ export const projects: ProjectContent[] = [
     slug: "plum3",
     title: "Plum3",
     icon: "PL",
-    tagline: "Éditeur local-first pour écrire, structurer et conserver ses documents.",
+    tagline: "Un espace d’écriture pensé pour construire vos histoires.",
     summary: [
       "Plum3 est un éditeur d’écriture local-first pour créer, structurer et conserver des documents Markdown et texte directement sur l’appareil.",
       "Il propose un espace simple et adaptable, sans compte ni cloud obligatoire, avec des thèmes, des modèles et des exports pensés pour accompagner l’écriture.",
     ],
     description:
-      "Éditeur d’écriture local-first pour créer, structurer et conserver des documents Markdown et texte directement sur l’appareil.",
+      "Un espace d’écriture local-first conçu pour les auteurs et les créateurs d’histoires. Commencez avec des modèles intégrés pour structurer vos récits, développer vos univers et organiser vos idées, tout en conservant vos documents localement sur votre appareil.",
     stack: ["Tauri 2", "React", "TypeScript", "Vite", "Rust", "Markdown"],
     status: "Utilisable · en évolution",
     proof:
@@ -242,11 +242,11 @@ export const projects: ProjectContent[] = [
     heroImage: "images/projects/plum3/01-en-plum3-night.jpg",
     about: {
       objective:
-        "Offrir un espace d’écriture simple, local et adaptable, sans compte ni cloud obligatoire.",
+        "Offrir un environnement d’écriture clair, local-first et sans distraction, conçu pour accompagner la création de récits et d’univers.",
       value:
-        "Plum3 permet de créer et d’ouvrir des fichiers Markdown et texte, de les sauvegarder localement, d’adapter les styles d’écriture, d’utiliser les thèmes Aube et Nuit et des modèles, puis d’exporter en PDF ou DOCX dans une interface française ou anglaise.",
+        "Plum3 propose des modèles d’écriture prêts à être modifiés pour commencer un roman, une nouvelle, un scénario, une chanson ou développer un univers complet.",
       proof:
-        "Ce projet montre ma capacité à concevoir un produit local-first, à structurer une expérience documentaire et à préparer une application Windows à sa publication.",
+        "Un outil d’écriture peut rester simple, rapide et respectueux de la vie privée, sans compte utilisateur ni service en ligne obligatoire.",
     },
     evolution: [
       "Définition du concept",
@@ -273,11 +273,11 @@ export const projects: ProjectContent[] = [
         src: "images/projects/plum3/04-fr-template-plum3-night.jpg",
         title: "Modèles d’écriture",
         description:
-          "Assistant de création en thème Nuit proposant des modèles librement modifiables pour démarrer un document.",
+          "Choisissez un point de départ adapté à votre projet, puis modifiez librement chaque section selon votre manière d’écrire.",
       },
     ],
     learned: [
-      "Structurer un éditeur local-first autour d’un usage d’écriture concret.",
+      "Concevoir un environnement d’écriture destiné aux auteurs, avec des modèles narratifs, une sauvegarde locale et une interface simple à utiliser.",
       "Gérer des fichiers réels et leur sauvegarde directement sur l’appareil.",
       "Coordonner l’interface et la logique documentaire.",
       "Préparer une application Windows à sa publication.",

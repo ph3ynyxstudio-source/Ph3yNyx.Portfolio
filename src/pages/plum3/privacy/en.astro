@@ -1,0 +1,188 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SectionBackground from "../../../components/backgrounds/SectionBackground.astro";
+import PageShell from "../../../components/layout/PageShell.astro";
+import { withBase } from "../../../utils/base-path";
+
+const plum3Href = withBase("plum3/");
+const privacyFrHref = withBase("plum3/privacy/");
+const privacyEnHref = withBase("plum3/privacy/en/");
+const privacyCanonicalHref = "https://ph3ynyx.dev/plum3/privacy/en/";
+const privacyAlternateHrefLangs = [
+  { lang: "fr", href: "https://ph3ynyx.dev/plum3/privacy/" },
+];
+---
+
+<BaseLayout
+  title="Plum3 privacy policy | Ph3yNyx.Studio"
+  description="English privacy policy placeholder for Plum3."
+  lang="en"
+  canonicalHref={privacyCanonicalHref}
+  alternateHrefLangs={privacyAlternateHrefLangs}
+>
+  <main>
+    <SectionBackground>
+      <PageShell class="privacy-page">
+        <div class="privacy-lang-switch" aria-label="Plum3 privacy policy language selector">
+          <a class="privacy-lang-link" href={privacyFrHref}>FR</a>
+          <a class="privacy-lang-link is-active" href={privacyEnHref} aria-current="page">EN</a>
+        </div>
+
+        <a class="privacy-back-link privacy-back-link-top" href={plum3Href}>← Back to Plum3</a>
+
+        <article class="privacy-card glass-panel">
+          <header class="privacy-header">
+            <p class="eyebrow">Plum3 · Privacy</p>
+            <h1>English version coming soon. The official French privacy policy remains available here.</h1>
+            <p class="privacy-updated">
+              <a href={privacyFrHref}>Voir la politique française</a>
+            </p>
+          </header>
+        </article>
+
+        <a class="privacy-back-link privacy-back-link-bottom" href={plum3Href}>← Back to Plum3</a>
+      </PageShell>
+    </SectionBackground>
+  </main>
+</BaseLayout>
+
+<style>
+  .privacy-page {
+    padding-top: clamp(3.5rem, 7vw, 6rem);
+    padding-bottom: clamp(4.5rem, 8vw, 7rem);
+  }
+
+  :global(.privacy-page > .container) {
+    position: relative;
+  }
+
+  .privacy-lang-switch {
+    position: absolute;
+    top: calc(1rem - clamp(3.5rem, 7vw, 6rem));
+    right: 1rem;
+    left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .privacy-lang-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.7rem;
+    border-radius: var(--radius-sm);
+    color: var(--color-muted);
+    font-weight: 600;
+  }
+
+  .privacy-lang-link.is-active {
+    color: var(--color-text);
+    background: var(--color-accent-surface-soft);
+    border: 1px solid var(--color-border-strong);
+  }
+
+  .privacy-back-link {
+    display: inline-flex;
+    width: fit-content;
+    margin-bottom: 1.5rem;
+    color: var(--color-cyan-bright);
+    font-weight: 650;
+  }
+
+  .privacy-back-link-top {
+    position: absolute;
+    top: calc(1rem - clamp(3.5rem, 7vw, 6rem));
+    left: 1rem;
+    margin: 0;
+  }
+
+  .privacy-back-link:hover,
+  .privacy-back-link:focus-visible {
+    color: var(--color-text);
+  }
+
+  .privacy-back-link-bottom {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .privacy-card {
+    width: min(100%, 720px);
+    margin: calc(1.5rem + 1.6rem) auto 0;
+    padding: clamp(1.5rem, 4.5vw, 3.25rem);
+  }
+
+  .privacy-header {
+    display: grid;
+    gap: 1rem;
+    padding-bottom: clamp(2rem, 5vw, 3.5rem);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .privacy-header .eyebrow {
+    margin-bottom: 0;
+  }
+
+  .privacy-header h1 {
+    max-width: 18ch;
+    font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+  }
+
+  .privacy-updated {
+    color: var(--color-cyan-bright);
+    font-weight: 650;
+  }
+
+  .privacy-card a:not(.privacy-back-link) {
+    color: var(--color-cyan-bright);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    overflow-wrap: anywhere;
+  }
+
+  @media (max-width: 640px) {
+    .privacy-page {
+      padding-top: 2rem;
+      padding-bottom: 3rem;
+    }
+
+    .privacy-lang-switch {
+      top: calc(0.75rem - 2rem);
+      right: 1rem;
+      left: auto;
+    }
+
+    .privacy-back-link-top {
+      top: calc(0.75rem - 2rem);
+      left: 1rem;
+    }
+
+    .privacy-lang-link {
+      font-size: 0.92rem;
+    }
+
+    .privacy-back-link {
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .privacy-card {
+      width: 100%;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+    }
+
+    .privacy-header {
+      gap: 0.75rem;
+      padding-bottom: 1.75rem;
+    }
+
+    .privacy-header h1 {
+      max-width: none;
+      font-size: clamp(1.55rem, 7.25vw, 2rem);
+      line-height: 1.12;
+    }
+  }
+</style>

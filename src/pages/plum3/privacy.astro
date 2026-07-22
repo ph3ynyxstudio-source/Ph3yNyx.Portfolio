@@ -5,22 +5,36 @@ import PageShell from "../../components/layout/PageShell.astro";
 import { withBase } from "../../utils/base-path";
 
 const plum3Href = withBase("plum3/");
+const privacyFrHref = withBase("plum3/privacy/");
+const privacyEnHref = withBase("plum3/privacy/en/");
+const privacyCanonicalHref = "https://ph3ynyx.dev/plum3/privacy/";
+const privacyAlternateHrefLangs = [
+  { lang: "en", href: "https://ph3ynyx.dev/plum3/privacy/en/" },
+];
 ---
 
 <BaseLayout
   title="Politique de confidentialité de Plum3 | Ph3yNyx.Studio"
   description="Politique de confidentialité officielle de l’application Plum3."
+  lang="fr"
+  canonicalHref={privacyCanonicalHref}
+  alternateHrefLangs={privacyAlternateHrefLangs}
 >
   <main>
     <SectionBackground>
       <PageShell class="privacy-page">
-        <a class="privacy-back-link" href={plum3Href}>← Retour vers Plum3</a>
+        <div class="privacy-lang-switch" aria-label="Sélecteur de langue de la politique de confidentialité Plum3">
+          <a class="privacy-lang-link is-active" href={privacyFrHref} aria-current="page">FR</a>
+          <a class="privacy-lang-link" href={privacyEnHref}>EN</a>
+        </div>
+
+        <a class="privacy-back-link privacy-back-link-top" href={plum3Href}>← Retour vers Plum3</a>
 
         <article class="privacy-card glass-panel">
           <header class="privacy-header">
             <p class="eyebrow">Plum3 · Confidentialité</p>
             <h1>Politique de confidentialité de Plum3</h1>
-            <p class="privacy-updated">Dernière mise à jour : 15 juillet 2026</p>
+            <p class="privacy-updated">Dernière mise à jour : 21 juillet 2026</p>
           </header>
 
           <section>
@@ -31,27 +45,55 @@ const plum3Href = withBase("plum3/");
 
           <section>
             <h2>2. Documents et textes</h2>
-            <p>Plum3 ne collecte pas et ne transmet pas vos documents ou leur contenu.</p>
-            <p>Les documents Markdown ou texte sont ouverts et enregistrés uniquement sur votre appareil, aux emplacements que vous choisissez. Les fichiers exportés en PDF ou Word sont également enregistrés dans un emplacement local choisi par vous.</p>
+            <p>Plum3 ne collecte pas et ne transmet pas automatiquement vos documents ou leur contenu.</p>
+            <p>Sur Windows, les documents Markdown ou texte sont ouverts et enregistrés uniquement sur votre appareil, aux emplacements que vous choisissez. Vous pouvez également exporter une copie de vos documents aux formats PDF ou Word (.docx).</p>
+            <p>Sur Android, les documents sont enregistrés dans la bibliothèque locale intégrée à Plum3. Cette bibliothèque constitue l’emplacement principal de travail dans l’application. Vous pouvez exporter une copie de vos documents au format Word (.docx).</p>
+            <p>Les fichiers exportés sont enregistrés dans un emplacement choisi par vous au moyen des fonctions du système d’exploitation.</p>
             <p>Aucun document, texte ou fichier exporté n’est envoyé automatiquement sur Internet.</p>
           </section>
 
-          <section>
-            <h2>3. Données stockées localement</h2>
-            <p>Plum3 conserve certaines informations sur votre appareil afin de mémoriser vos choix et de permettre la récupération de votre travail.</p>
-            <p>Ces informations peuvent comprendre :</p>
-            <ul>
-              <li>la langue choisie, en français ou en anglais ;</li>
-              <li>le thème Aube ou Nuit ;</li>
-              <li>les réglages d’écriture, notamment la police, la taille du texte, l’interligne, la largeur de lecture et les palettes de couleurs ;</li>
-              <li>les préférences d’affichage des compteurs de mots, de caractères et de lignes ;</li>
-              <li>l’activation ou la désactivation de l’aperçu Markdown ;</li>
-              <li>l’activation ou la désactivation de la sauvegarde automatique ;</li>
-              <li>un brouillon de récupération ;</li>
-              <li>l’historique des documents récents.</li>
-            </ul>
-            <p>Le mode concentration et l’état ouvert ou replié des panneaux ne sont pas conservés au redémarrage de l’application.</p>
-          </section>
+         <section>
+  <h2>3. Données stockées localement</h2>
+
+  <p>
+    Plum3 conserve certaines informations sur votre appareil afin de mémoriser
+    vos choix, de gérer vos documents et de permettre la récupération de votre
+    travail.
+  </p>
+
+  <p>Ces informations peuvent comprendre :</p>
+
+  <ul>
+    <li>la langue choisie, en français ou en anglais ;</li>
+    <li>le thème Aube ou Nuit ;</li>
+    <li>
+      les réglages d’écriture, notamment la police, la taille du texte,
+      l’interligne, la largeur de lecture et les palettes de couleurs ;
+    </li>
+    <li>
+      les préférences d’affichage des compteurs de mots, de caractères et de
+      lignes ;
+    </li>
+    <li>l’activation ou la désactivation de l’aperçu Markdown ;</li>
+    <li>l’activation ou la désactivation de la sauvegarde automatique ;</li>
+    <li>un brouillon de récupération ;</li>
+    <li>l’historique des documents récents sur Windows ;</li>
+    <li>
+      les documents et les informations nécessaires au fonctionnement de la
+      bibliothèque locale sur Android.
+    </li>
+  </ul>
+
+  <p>
+    Sur Android, les documents de la bibliothèque restent enregistrés
+    localement dans l’espace de stockage géré par Plum3.
+  </p>
+
+  <p>
+    Le mode concentration et l’état ouvert ou replié des panneaux ne sont pas
+    conservés au redémarrage de l’application.
+  </p>
+</section>
 
           <section>
             <h2>4. Brouillons de récupération</h2>
@@ -66,12 +108,32 @@ const plum3Href = withBase("plum3/");
             <p>Lors du prochain lancement, Plum3 peut restaurer ce brouillon dans l’éditeur. Le brouillon local est supprimé après l’enregistrement réussi du document ou lorsqu’il est remplacé par un autre document.</p>
           </section>
 
-          <section>
-            <h2>5. Historique des documents récents</h2>
-            <p>Plum3 conserve localement une liste pouvant contenir jusqu’à dix chemins de fichiers récemment ouverts, enregistrés ou renommés.</p>
-            <p>Cette liste permet de retrouver rapidement les documents récents. Les chemins peuvent révéler le nom du fichier et l’emplacement où il est enregistré sur votre appareil.</p>
-            <p>Vous pouvez retirer une entrée de l’historique depuis l’application. Cette action retire uniquement le chemin de la liste et ne supprime pas le document lui-même.</p>
-          </section>
+       <section>
+  <h2>5. Historique des documents récents</h2>
+
+  <p>
+    Sur Windows, Plum3 conserve localement une liste pouvant contenir jusqu’à
+    dix chemins de fichiers récemment ouverts, enregistrés ou renommés.
+  </p>
+
+  <p>
+    Cette liste permet de retrouver rapidement les documents récents. Les
+    chemins peuvent révéler le nom du fichier et l’emplacement où il est
+    enregistré sur votre appareil.
+  </p>
+
+  <p>
+    Vous pouvez retirer une entrée de l’historique depuis l’application. Cette
+    action retire uniquement le chemin de la liste et ne supprime pas le
+    document lui-même.
+  </p>
+
+  <p>
+    Sur Android, les documents sont accessibles directement depuis la
+    bibliothèque locale intégrée à Plum3. L’application ne conserve pas
+    d’historique de chemins de fichiers comme sur Windows.
+  </p>
+</section>
 
           <section>
             <h2>6. Comptes utilisateurs</h2>
@@ -93,25 +155,85 @@ const plum3Href = withBase("plum3/");
             <p>Les compteurs de mots, de caractères et de lignes sont calculés localement et ne sont pas transmis.</p>
           </section>
 
-          <section>
-            <h2>8. Connexions réseau</h2>
-            <p>Plum3 n’utilise aucune connexion Internet pour ouvrir, modifier, analyser, enregistrer ou exporter vos documents.</p>
-            <p>L’application ne transmet automatiquement aucune donnée à Ph3yNyx.Studio ou à un service tiers.</p>
-            <p>Après une action explicite de votre part, Plum3 peut demander au système d’exploitation :</p>
-            <ul>
-              <li>d’ouvrir le site <a href="https://ph3ynyx.dev/">https://ph3ynyx.dev/</a> dans votre navigateur par défaut ;</li>
-              <li>d’ouvrir votre client de messagerie avec un courriel de retour prérempli.</li>
-            </ul>
-            <p>Ces applications externes ne sont jamais ouvertes automatiquement au démarrage ou pendant l’écriture. Elles sont ouvertes uniquement lorsque vous cliquez sur le lien du site ou sur le bouton permettant d’envoyer un retour par courriel.</p>
-            <p>Le courriel prérempli peut contenir la version de Plum3 et des champs de diagnostic à compléter. Plum3 n’y ajoute aucun document, aucun texte édité et aucune pièce jointe.</p>
-          </section>
+      <section>
+  <h2>8. Connexions réseau</h2>
 
-          <section>
-            <h2>9. Services tiers</h2>
-            <p>Plum3 ne partage aucune donnée automatiquement avec des services tiers.</p>
-            <p>Toutefois, si vous choisissez de visiter le site du studio ou d’envoyer un courriel, votre navigateur, votre client de messagerie et leurs fournisseurs peuvent traiter certaines données nécessaires à la connexion ou à l’envoi du message.</p>
-            <p>Ces traitements sont effectués par les applications ou services que vous choisissez d’utiliser et sont soumis à leurs propres politiques de confidentialité.</p>
-          </section>
+  <p>
+    Plum3 n’utilise aucune connexion Internet pour créer, ouvrir, modifier,
+    analyser, enregistrer ou exporter vos documents.
+  </p>
+
+  <p>
+    L’application ne transmet automatiquement aucune donnée à Ph3yNyx.Studio
+    ni à un service tiers.
+  </p>
+
+  <p>
+    Après une action explicite de votre part, Plum3 peut demander au système
+    d’exploitation :
+  </p>
+
+  <ul>
+    <li>
+      d’ouvrir le site
+      <a href="https://ph3ynyx.dev/">https://ph3ynyx.dev/</a>
+      dans votre navigateur par défaut ;
+    </li>
+    <li>
+      d’ouvrir votre client de messagerie avec un courriel de retour prérempli ;
+    </li>
+    <li>
+      sur Android, d’ouvrir le menu de partage afin de transmettre un document
+      Markdown à une application ou à un service que vous choisissez.
+    </li>
+  </ul>
+
+  <p>
+    Ces applications externes ne sont jamais ouvertes automatiquement au
+    démarrage ou pendant l’écriture. Elles sont ouvertes uniquement lorsque
+    vous choisissez l’action correspondante.
+  </p>
+
+  <p>
+    Lors d’un partage sur Android, Plum3 transmet uniquement le document que
+    vous avez choisi à l’application sélectionnée. Ph3yNyx.Studio ne reçoit
+    aucune copie automatique de ce document.
+  </p>
+
+  <p>
+    Le courriel prérempli peut contenir la version de Plum3 et des champs de
+    diagnostic à compléter. Plum3 n’y ajoute aucun document, aucun texte édité
+    et aucune pièce jointe.
+  </p>
+</section>
+
+     <section>
+  <h2>9. Services tiers</h2>
+
+  <p>
+    Plum3 ne partage automatiquement aucune donnée avec des services tiers.
+  </p>
+
+  <p>
+    Toutefois, si vous choisissez de visiter le site du studio, d’envoyer un
+    courriel ou de partager un document depuis Android, votre navigateur, votre
+    client de messagerie, l’application de partage sélectionnée et leurs
+    fournisseurs peuvent traiter certaines données nécessaires à l’action
+    demandée.
+  </p>
+
+  <p>
+    Ces traitements sont effectués uniquement après une action explicite de
+    votre part. Ils sont réalisés par les applications ou services que vous
+    choisissez d’utiliser et sont soumis à leurs propres politiques de
+    confidentialité.
+  </p>
+
+  <p>
+    Plum3 et Ph3yNyx.Studio ne reçoivent automatiquement aucune copie des
+    documents exportés ou partagés.
+  </p>
+</section>
 
           <section>
             <h2>10. Courriels de retour</h2>
@@ -120,17 +242,56 @@ const plum3Href = withBase("plum3/");
             <p>Il est recommandé de ne pas joindre de document ou d’information confidentielle à moins que vous souhaitiez expressément les communiquer.</p>
           </section>
 
-          <section>
-            <h2>11. Conservation et suppression des données locales</h2>
-            <p>Les préférences, l’historique récent et les brouillons de récupération restent sur votre appareil tant qu’ils ne sont pas supprimés ou remplacés par l’application, par vous-même ou par le système.</p>
-            <p>Plum3 ne possède aucune copie distante de ces données et ne peut pas les consulter ou les supprimer à distance.</p>
-          </section>
+        <section>
+  <h2>11. Conservation et suppression des données locales</h2>
 
-          <section>
-            <h2>12. Sécurité et contrôle de vos fichiers</h2>
-            <p>Plum3 accède aux fichiers et emplacements que vous choisissez dans le cadre de l’ouverture, de l’enregistrement, du renommage ou de l’utilisation de documents récents.</p>
-            <p>La sécurité des documents dépend également de la sécurité de votre appareil, de votre compte Windows, de vos sauvegardes et des emplacements où vous choisissez d’enregistrer les fichiers.</p>
-          </section>
+  <p>
+    Les préférences, l’historique des documents récents, les brouillons de
+    récupération et, sur Android, les documents de la bibliothèque locale
+    restent sur votre appareil tant qu’ils ne sont pas supprimés ou remplacés
+    par l’application, par vous-même ou par le système d’exploitation.
+  </p>
+
+  <p>
+    Les fichiers exportés en Word (.docx) et, sur Windows, les fichiers
+    exportés en PDF sont indépendants de la bibliothèque de Plum3. Leur
+    conservation et leur suppression dépendent de l’emplacement et des
+    applications que vous choisissez lors de l’exportation.
+  </p>
+
+  <p>
+    Plum3 ne possède aucune copie distante de ces données et ne peut ni les
+    consulter ni les supprimer à distance.
+  </p>
+</section>
+
+       <section>
+  <h2>12. Sécurité et contrôle de vos fichiers</h2>
+
+  <p>
+    Sur Windows, Plum3 accède uniquement aux fichiers et aux emplacements que
+    vous choisissez dans le cadre de l’ouverture, de l’enregistrement, du
+    renommage, de l’exportation ou de l’utilisation des documents récents.
+  </p>
+
+  <p>
+    Sur Android, les documents de travail sont conservés dans la bibliothèque
+    locale intégrée à Plum3. L’application accède aux emplacements ou aux
+    applications que vous choisissez uniquement lorsque vous exportez un
+    document en Word (.docx) ou lorsque vous partagez un document Markdown.
+  </p>
+
+  <p>
+    Plum3 ne chiffre pas lui-même le contenu des documents.
+  </p>
+
+  <p>
+    La sécurité de vos documents dépend également de la sécurité de votre
+    appareil, de votre compte utilisateur, de vos sauvegardes et des
+    emplacements ou applications que vous choisissez pour enregistrer,
+    exporter ou partager vos fichiers.
+  </p>
+</section>
 
           <section>
             <h2>13. Modifications de cette politique</h2>
@@ -163,12 +324,48 @@ const plum3Href = withBase("plum3/");
     padding-bottom: clamp(4.5rem, 8vw, 7rem);
   }
 
+  :global(.privacy-page > .container) {
+    position: relative;
+  }
+
+  .privacy-lang-switch {
+    position: absolute;
+    top: calc(1rem - clamp(3.5rem, 7vw, 6rem));
+    right: 1rem;
+    left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .privacy-lang-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.7rem;
+    border-radius: var(--radius-sm);
+    color: var(--color-muted);
+    font-weight: 600;
+  }
+
+  .privacy-lang-link.is-active {
+    color: var(--color-text);
+    background: var(--color-accent-surface-soft);
+    border: 1px solid var(--color-border-strong);
+  }
+
   .privacy-back-link {
     display: inline-flex;
     width: fit-content;
     margin-bottom: 1.5rem;
     color: var(--color-cyan-bright);
     font-weight: 650;
+  }
+
+  .privacy-back-link-top {
+    position: absolute;
+    top: calc(1rem - clamp(3.5rem, 7vw, 6rem));
+    left: 1rem;
+    margin: 0;
   }
 
   .privacy-back-link:hover,
@@ -183,7 +380,7 @@ const plum3Href = withBase("plum3/");
 
   .privacy-card {
     width: min(100%, 720px);
-    margin: 0 auto;
+    margin: calc(1.5rem + 1.6rem) auto 0;
     padding: clamp(1.5rem, 4.5vw, 3.25rem);
   }
 
@@ -252,6 +449,21 @@ const plum3Href = withBase("plum3/");
     .privacy-page {
       padding-top: 2rem;
       padding-bottom: 3rem;
+    }
+
+    .privacy-lang-switch {
+      top: calc(0.75rem - 2rem);
+      right: 1rem;
+      left: auto;
+    }
+
+    .privacy-back-link-top {
+      top: calc(0.75rem - 2rem);
+      left: 1rem;
+    }
+
+    .privacy-lang-link {
+      font-size: 0.92rem;
     }
 
     .privacy-back-link {
